@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.AddTaskFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
+
+    <TextView
+        android:id="@+id/text_view_add_task_title"
+        style="@style/Widget.TaskHero.TextView"
+        android:layout_marginTop="24dp"
+        android:text="@string/add_task_title"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_title"
+        style="@style/Widget.TaskHero.TextInputLayout"
+        android:hint="@string/title"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/text_view_add_task_title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_task_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:minHeight="@dimen/min_touch_target_size" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_description"
+        style="@style/Widget.TaskHero.TextInputLayout"
+        android:hint="@string/description"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_task_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:minLines="3" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/text_view_select_date"
+        style="@style/Widget.TaskHero.TextView"
+        android:background="?attr/editTextBackground"
+        android:gravity="start"
+        android:text="@string/select_due_date"
+        android:textSize="16sp"
+        app:drawableEndCompat="@drawable/ic_calendar"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_description" />
+
+    <TextView
+        android:id="@+id/text_view_select_time"
+        style="@style/Widget.TaskHero.TextView"
+        android:layout_height="wrap_content"
+        android:background="?attr/editTextBackground"
+        android:gravity="start"
+        android:text="@string/select_time"
+        android:textSize="16sp"
+        app:drawableEndCompat="@drawable/ic_time"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/text_view_select_date" />
+
+    <Button
+        android:id="@+id/button_save_task"
+        style="@style/Widget.TaskHero.Button"
+        android:layout_marginBottom="24dp"
+        android:text="@string/save_task_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
