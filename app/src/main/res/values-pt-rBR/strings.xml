@@ -11,17 +11,17 @@
     <string name="login_button">Entrar</string>
     <string name="login_button_content_desc">Efetuar o login no aplicativo</string>
     <string name="go_to_register">Não tem uma conta? Registre-se</string>
-    <string name="error_invalid_credentials">E-mail ou senha inválidos.</string>
-    <string name="error_fill_all_fields">Por favor, preencha todos os campos.</string>
+    <string name="error_invalid_credentials">E-mail ou senha inválidos</string>
+    <string name="error_fill_all_fields">Por favor, preencha todos os campos</string>
     <string name="success_login">Login bem-sucedido!</string>
 
     <string name="register_title">Criar Conta</string>
     <string name="select_profile_picture_content_desc">Selecionar foto do perfil</string>
     <string name="register_button">Registrar</string>
     <string name="success_register">Registro bem-sucedido!</string>
-    <string name="error_register">Erro no registro. O e-mail pode já estar em uso.</string>
-    <string name="error_all_fields_and_photo_required">Todos os campos e a foto são obrigatórios.</string>
-    <string name="error_saving_image">Erro ao salvar a imagem.</string>
+    <string name="error_register">Erro no registro. O e-mail pode já estar em uso</string>
+    <string name="error_all_fields_and_photo_required">Todos os campos e a foto são obrigatórios</string>
+    <string name="error_saving_image">Erro ao salvar a imagem</string>
 
     <string name="menu_tasks">Tarefas</string>
     <string name="menu_profile">Perfil</string>
@@ -35,22 +35,32 @@
     <string name="select_due_date">Selecione a data de vencimento</string>
     <string name="select_time">Selecione a hora</string>
     <string name="save_task_button">Salvar Tarefa</string>
-    <string name="error_task_title_required">O título da tarefa é obrigatório.</string>
-    <string name="success_task_saved">Tarefa salva com sucesso!</string>
-    <string name="error_user_not_found">Erro: Usuário não encontrado. Tente fazer login novamente.</string>
+    <string name="error_task_title_required">O título da tarefa é obrigatório</string>
+    <string name="success_task_saved">Tarefa salva!</string>
+    <string name="error_user_not_found">Erro: Usuário não encontrado. Tente fazer login novamente</string>
 
     <string name="delete_dialog_title">Confirmar exclusão</string>
     <string name="delete_dialog_message">Você tem certeza que deseja excluir esta tarefa? Esta ação não pode ser desfeita.</string>
     <string name="action_delete">Excluir</string>
     <string name="action_cancel">Cancelar</string>
-    <string name="success_task_deleted">Tarefa excluída com sucesso!</string>
+    <string name="success_task_deleted">Tarefa excluída!</string>
     <string name="delete_task_content_desc">Delete task</string>
 
-    <string name="edit_task_title">Editar Tarefa</string>"
-    <string name="success_task_updated">Tarefa atualizada com sucesso!</string>
+    <string name="edit_task_title">Editar Tarefa</string>
+    <string name="success_task_updated">Tarefa atualizada!</string>
 
     <string name="profile_score">Pontuação: %1$d</string>
     <string name="profile_image_content_desc">Imagem do usuário</string>
+    <string name="edit_profile_content_desc">Edição de Perfil</string>
+
+    <string name="edit_profile_title">Editar Perfil</string>
+    <string name="action_save_changes">Salvar Alterações</string>
+    <string name="error_name_required">O nome não pode ser vazio</string>
+    <string name="error_email_required">O e-mail não pode ser vazio</string>
+    <string name="error_email_already_exists">O e-mail já está em uso</string>
+    <string name="error_verifying_email">Erro ao verificar o e-mail</string>
+    <string name="error_saving_new_image">Erro ao salvar a nova imagem</string>
+    <string name="success_profile_updated">Perfil atualizado!</string>
     <string name="logout_button">Logout</string>
 
 </resources>

@@ -27,8 +27,7 @@ public class ProfileFragment extends Fragment {
     private FragmentProfileBinding binding;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -51,13 +50,24 @@ public class ProfileFragment extends Fragment {
                     if (user.getPhotoUri() != null && !user.getPhotoUri().isEmpty()) {
                         binding.profileImage.setImageTintList(null);
                         binding.profileImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                        Glide.with(this)
-                                .load(Uri.parse(user.getPhotoUri()))
-                                .into(binding.profileImage);
+                        Glide.with(this).load(Uri.parse(user.getPhotoUri())).into(binding.profileImage);
                     }
                 }
             });
         }
+
+        binding.buttonEditProfile.setOnClickListener(v -> {
+            if (userId != -1) {
+                EditProfileFragment editFragment = new EditProfileFragment();
+                Bundle args = new Bundle();
+                args.putInt("USER_ID", userId);
+                editFragment.setArguments(args);
+
+                if (getActivity() instanceof MainActivity) {
+                    ((MainActivity) getActivity()).loadFragment(editFragment);
+                }
+            }
+        });
 
         binding.buttonLogout.setOnClickListener(v -> logout());
     }
