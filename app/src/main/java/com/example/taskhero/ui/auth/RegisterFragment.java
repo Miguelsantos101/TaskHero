@@ -1,5 +1,7 @@
 package com.example.taskhero.ui.auth;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +14,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -21,6 +25,7 @@ import com.example.taskhero.databinding.FragmentRegisterBinding;
 import com.example.taskhero.util.HashUtils;
 import com.example.taskhero.util.UIUtils;
 import com.example.taskhero.viewmodel.AuthViewModel;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -32,22 +37,41 @@ public class RegisterFragment extends Fragment {
 
     private FragmentRegisterBinding binding;
     private AuthViewModel authViewModel;
+    private Uri tempImageUri;
     private Uri selectedImageUri;
     private static final String TAG = "RegisterFragment";
 
-    private final ActivityResultLauncher<String> getContent = registerForActivityResult(
-            new ActivityResultContracts.GetContent(),
-            uri -> {
-                if (uri != null) {
-                    selectedImageUri = uri;
-                    binding.imageViewProfile.setImageURI(uri);
-                }
-            }
-    );
+    private ActivityResultLauncher<String> requestPermissionLauncher;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+            if (isGranted) {
+                launchCamera();
+            } else {
+                UIUtils.showErrorSnackbar(requireView(), getString(R.string.error_no_camera_permission));
+            }
+        });
+    }
+
+    private final ActivityResultLauncher<Uri> cameraLauncher = registerForActivityResult(new ActivityResultContracts.TakePicture(), success -> {
+        if (success) {
+            selectedImageUri = tempImageUri;
+            binding.imageViewProfile.setImageURI(selectedImageUri);
+        }
+    });
+
+    private final ActivityResultLauncher<String> galleryLauncher = registerForActivityResult(new ActivityResultContracts.GetContent(), uri -> {
+        if (uri != null) {
+            selectedImageUri = uri;
+            binding.imageViewProfile.setImageURI(selectedImageUri);
+        }
+    });
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentRegisterBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -63,10 +87,43 @@ public class RegisterFragment extends Fragment {
     }
 
     private void setupClickListeners() {
-        binding.imageViewProfile.setOnClickListener(v -> getContent.launch("image/*"));
-
+        binding.imageViewProfile.setOnClickListener(v -> showPhotoSourceDialog());
         binding.buttonRegister.setOnClickListener(v -> registerUser());
     }
+
+    private void showPhotoSourceDialog() {
+
+
+        final CharSequence[] options = getResources().getStringArray(R.array.photo_source_options);
+
+        new MaterialAlertDialogBuilder(requireContext()).setTitle(R.string.dialog_title_photo_source).setItems(options, (dialog, which) -> {
+            if (which == 0) {
+                checkPermissionAndTakePhoto();
+            } else {
+                galleryLauncher.launch("image/*");
+            }
+        }).show();
+    }
+
+    private void checkPermissionAndTakePhoto() {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+            launchCamera();
+        } else {
+            requestPermissionLauncher.launch(Manifest.permission.CAMERA);
+        }
+    }
+
+    private void launchCamera() {
+        try {
+            File tempFile = File.createTempFile("JPEG_" + System.currentTimeMillis(), ".jpg", requireContext().getCacheDir());
+            tempImageUri = FileProvider.getUriForFile(requireContext(), requireContext().getPackageName() + ".provider", tempFile);
+            cameraLauncher.launch(tempImageUri);
+        } catch (IOException e) {
+            Log.e(TAG, "Error creating temp file for camera", e);
+            UIUtils.showErrorSnackbar(requireView(), getString(R.string.error_preparing_camera));
+        }
+    }
+
 
     private void observeViewModel() {
         authViewModel.getRegistrationResult().observe(getViewLifecycleOwner(), success -> {

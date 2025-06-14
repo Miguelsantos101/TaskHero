@@ -48,14 +48,16 @@ public class AuthViewModel extends AndroidViewModel {
     public void registerUser(User user) {
         try {
             Future<User> future = repository.findByEmail(user.getEmail());
-            if (future.get() == null) {
+            User existingUser = future.get();
+
+            if (existingUser == null) {
                 repository.registerUser(user);
                 registrationResult.postValue(true);
             } else {
                 registrationResult.postValue(false);
             }
         } catch (ExecutionException | InterruptedException e) {
-            Log.e(TAG, "Error while trying to register user", e);
+            Log.e(TAG, "Error during registration check", e);
             registrationResult.postValue(false);
         }
     }

@@ -17,6 +17,13 @@
 
     <string name="register_title">Criar Conta</string>
     <string name="select_profile_picture_content_desc">Selecionar foto do perfil</string>
+    <string name="dialog_title_photo_source">Escolha uma fonte</string>
+    <string-array name="photo_source_options">
+        <item>Tirar Foto</item>
+        <item>Escolher da Galeria</item>
+    </string-array>
+    <string name="error_preparing_camera">Erro ao preparar a câmera</string>
+    <string name="error_no_camera_permission">Permissão de câmera negada</string>
     <string name="register_button">Registrar</string>
     <string name="success_register">Registro bem-sucedido!</string>
     <string name="error_register">Erro no registro. O e-mail pode já estar em uso</string>

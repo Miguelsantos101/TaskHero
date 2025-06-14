@@ -17,6 +17,13 @@
 
     <string name="register_title">Create Account</string>
     <string name="select_profile_picture_content_desc">Select profile picture</string>
+    <string name="dialog_title_photo_source">Choose a source</string>
+    <string-array name="photo_source_options">
+        <item>Take Photo</item>
+        <item>Choose from Gallery</item>
+    </string-array>
+    <string name="error_preparing_camera">Error preparing camera</string>
+    <string name="error_no_camera_permission">Camera permission denied</string>
     <string name="register_button">Sign Up</string>
     <string name="success_register">Registration successful!</string>
     <string name="error_register">Registration error. The email may already be in use</string>

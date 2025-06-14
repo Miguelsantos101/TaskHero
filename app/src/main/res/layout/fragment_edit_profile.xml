@@ -41,10 +41,13 @@
         android:clickable="true"
         android:contentDescription="@string/select_profile_picture_content_desc"
         android:focusable="true"
+        app:backgroundTint="?attr/colorSurfaceVariant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_view_edit_profile_title"
-        app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView" />
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView"
+        app:tint="?attr/colorOnSurface"
+        tools:src="@tools:sample/avatars" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout_name_edit"
