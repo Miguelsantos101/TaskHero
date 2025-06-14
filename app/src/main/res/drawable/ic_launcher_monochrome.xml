@@ -7,16 +7,12 @@
     <group
         android:scaleX="2.5"
         android:scaleY="2.5"
-        android:translateX="25"
-        android:translateY="25">
+        android:translateX="27"
+        android:translateY="27">
 
         <path
-            android:fillColor="@color/green_dark"
+            android:fillColor="@android:color/white"
             android:pathData="M12,1L3,5v6c0,5.55 3.84,10.74 9,12 5.16,-1.26 9,-6.45 9,-12V5L12,1z" />
-
-        <path
-            android:fillColor="@color/white"
-            android:pathData="M9,16.17L4.83,12l-1.42,1.41L9,19 21,7l-1.41,-1.41L9,16.17z" />
 
     </group>
 </vector>
