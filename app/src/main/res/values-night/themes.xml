@@ -1,7 +1,18 @@
 <resources>
-    <!-- Base application theme. -->
+
     <style name="Base.Theme.TaskHero" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/green_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <item name="android:colorBackground">@color/black</item>
+        <item name="colorSurface">@color/black</item>
+        <item name="colorOnBackground">@color/text_primary_dark</item>
+        <item name="colorOnSurface">@color/text_primary_dark</item>
+
+        <item name="toolbarStyle">@style/Widget.TaskHero.Toolbar</item>
+        <item name="android:statusBarColor">@color/green_dark</item>
     </style>
+
 </resources>

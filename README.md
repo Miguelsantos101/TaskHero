@@ -1,46 +1,46 @@
 # TaskHero
 
-Especificações do Projeto: **TaskHero - Gerenciador de Tarefas Gamificado**
+Project Specifications: **TaskHero - Gamified Task Manager**
 
-Este documento descreve as especificações do projeto final da disciplina de Programação de Dispositivos Móveis.
+This document describes the specifications for the final project of the Mobile Device Programming course.
 
-## 1. Alunos do Grupo
+## 1. Group Members
 - Miguel dos Santos Flores
 
-## 2. Visão Geral do Software
-O TaskHero é um aplicativo para o sistema Android projetado para ajudar os usuários a gerenciar suas tarefas diárias de uma forma mais motivadora e interativa. A principal diferença de um gerenciador de tarefas comum é a introdução de elementos de "gamificação": os usuários ganham pontos (escore) por cada tarefa concluída, transformando a produtividade em um desafio pessoal. O aplicativo exigirá cadastro e login, e cada usuário terá seu próprio perfil com foto e pontuação.
+## 2. Software Overview
+TaskHero is an Android application designed to help users manage their daily tasks in a more motivating and interactive way. The main difference from a common task manager is the introduction of "gamification" elements: users earn points (score) for each completed task, turning productivity into a personal challenge. The application will require registration and login, and each user will have their own profile with a photo and score.
 
-## 3. Papéis
-- **Usuário**: O único papel no sistema. Após realizar o cadastro e login, o usuário pode criar, visualizar, editar, marcar como concluídas e excluir suas próprias tarefas. Ele também pode visualizar seu perfil, incluindo sua foto e o escore total acumulado.
+## 3. Roles
+- **User**: The only role in the system. After registering and logging in, the user can create, view, edit, mark as completed, and delete their own tasks. They can also view their profile, including their photo and total accumulated score.
 
-## 4. Requisitos Funcionais
-- **Usuários que o app permite**:
-  - Apenas usuários cadastrados poderão acessar a área principal do aplicativo para gerenciar tarefas. 
+## 4. Functional Requirements
+- **Allowed Users**:
+  - Only registered users will be able to access the main area of the application to manage tasks.
 
-- **O que cada usuário pode fazer**:
-  - Realizar cadastro no sistema fornecendo nome, e-mail, senha e uma foto de perfil. 
-  - Fazer login com e-mail e senha.
-  - Criar novas tarefas (com título, descrição e data/hora de prazo).
-  - Visualizar a lista de tarefas pendentes e concluídas.
-  - Editar os detalhes de uma tarefa existente.
-  - Marcar uma tarefa como "concluída", o que irá gerar pontos.
-  - Excluir uma tarefa.
-  - Visualizar e editar seu perfil (foto e nome).
-  
-- **Entradas necessárias**:
-  - **Cadastro**: Nome, e-mail, senha e foto do usuário. 
-  - **Login**: E-mail e senha. 
-  - **Criação de Tarefa**: Título (texto), descrição (texto), data e hora do prazo.
+- **What each user can do**:
+  - Register in the system by providing name, email, password, and a profile picture.
+  - Log in with email and password.
+  - Create new tasks (with title, description, and due date/time).
+  - View the list of pending and completed tasks.
+  - Edit the details of an existing task.
+  - Mark a task as "completed," which will generate points.
+  - Delete a task.
+  - View and edit their profile (photo, name and email).
 
-- **Processamento que o app realiza**:
-  - O aplicativo irá guardar o **hash da senha** do usuário para garantir a segurança. 
-  - O app irá **armazenar a foto do usuário** associada ao seu perfil. 
-  - O sistema irá **associar as atividades (tarefas) aos usuários** que as criaram. 
-  - Ao marcar uma tarefa como concluída, o app irá **calcular e guardar o escore do usuário**, atualizando sua pontuação total. 
-  - O app utilizará **alarmes e notificações** para alertar o usuário sobre os prazos das tarefas.
-  
-- **Relatórios e Saídas do aplicativo**:
-  - Tela principal com a listagem de tarefas do usuário, separadas por pendentes e concluídas.
-  - Tela de perfil exibindo a foto, nome e escore total do usuário.
-  - Notificações no dispositivo para lembrar o usuário de uma tarefa que está próxima do vencimento.
-  - Mensagens de erro para entradas inválidas (ex: campos de login/cadastro vazios). 
+- **Required Inputs**:
+  - **Registration**: Name, email, password, and user photo.
+  - **Login**: Email and password.
+  - **Task Creation**: Title (text), description (text), due date and time.
+
+- **Processing performed by the app**:
+  - The application will store the user's **password hash** to ensure security.
+  - The app will **store the user's photo** associated with their profile.
+  - The system will **associate activities (tasks) with the users** who created them.
+  - When a task is marked as completed, the app will **calculate and store the user's score**, updating their total score.
+  - The app will use **alarms and notifications** to alert the user about task deadlines.
+
+- **Application Reports and Outputs**:
+  - Main screen with the user's task list, separated by pending and completed.
+  - Profile screen displaying the user's photo, name, and total score.
+  - Device notifications to remind the user of a task that is nearing its due date.
+  - Error messages for invalid inputs (e.g., empty login/registration fields).

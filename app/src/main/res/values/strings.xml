@@ -1,4 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TaskHero</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+
+    <string name="login_title">Login</string>
+    <string name="login_button">Login</string>
+    <string name="login_button_content_desc">Log into the application</string>
+    <string name="go_to_register">Don\'t have an account? Sign Up</string>
+    <string name="error_invalid_credentials">Invalid email or password.</string>
+    <string name="error_fill_all_fields">Please fill in all fields.</string>
+    <string name="success_login">Login successful!</string>
+
+    <string name="register_title">Create Account</string>
+    <string name="select_profile_picture_content_desc">Select profile picture</string>
+    <string name="register_button">Sign Up</string>
+    <string name="success_register">Registration successful!</string>
+    <string name="error_register">Registration error. The email may already be in use.</string>
+    <string name="error_all_fields_and_photo_required">All fields and the photo are required.</string>
+    <string name="error_saving_image">Error saving image.</string>
+
+    <string name="menu_tasks">Tasks</string>
+    <string name="menu_profile">Profile</string>
+
+    <string name="task_list_empty">No tasks yet!</string>
+    <string name="task_due_date_format">Due: %1$s at %2$s</string>
+    <string name="add_new_task_content_desc">Add new task</string>
+    <string name="info_points_gain"> points!</string>
+
+    <string name="add_task_title">New Task</string>
+    <string name="select_due_date">Select a due date</string>
+    <string name="select_time">Select the time</string>
+    <string name="save_task_button">Save Task</string>
+    <string name="error_task_title_required">The task title is required.</string>
+    <string name="success_task_saved">Task saved successfully!</string>
+    <string name="error_user_not_found">Error: User not found. Please try logging in again.</string>
+
+    <string name="delete_dialog_title">Confirm deletion</string>
+    <string name="delete_dialog_message">Are you sure you want to delete this task? This action cannot be undone.</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="success_task_deleted">Task deleted successfully!</string>
+    <string name="delete_task_content_desc">Delete task</string>
+
+    <string name="edit_task_title">Edit Task</string>"
+    <string name="success_task_updated">Task updated successfully!</string>
+
+    <string name="profile_score">Score: %1$d</string>
+    <string name="profile_image_content_desc">Image of the user</string>
+    <string name="logout_button">Logout</string>
+
 </resources>
