@@ -11,7 +11,6 @@ import com.example.taskhero.data.model.Task;
 
 import java.util.List;
 
-@SuppressWarnings("unused")
 @Dao
 public interface TaskDao {
 

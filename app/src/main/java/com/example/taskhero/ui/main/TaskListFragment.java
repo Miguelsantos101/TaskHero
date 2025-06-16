@@ -25,14 +25,12 @@ import com.example.taskhero.util.UIUtils;
 import com.example.taskhero.viewmodel.TaskViewModel;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-@SuppressWarnings("unused")
 public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInteractionListener {
 
     private FragmentTaskListBinding binding;
     private TaskViewModel taskViewModel;
     private TaskAdapter adapter;
     private User currentUser;
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

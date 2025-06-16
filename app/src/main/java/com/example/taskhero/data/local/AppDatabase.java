@@ -13,9 +13,7 @@ import com.example.taskhero.data.model.User;
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();
-
     public abstract TaskDao taskDao();
-
     private static volatile AppDatabase INSTANCE;
 
     public static AppDatabase getDatabase(final Context context) {

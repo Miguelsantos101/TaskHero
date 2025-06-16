@@ -5,7 +5,6 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@SuppressWarnings("unused")
 @Entity(tableName = "users", indices = {@Index(value = {"email"}, unique = true)})
 public class User {
 
@@ -58,10 +57,12 @@ public class User {
         this.email = email;
     }
 
+    @SuppressWarnings("unused")
     public String getPasswordHash() {
         return passwordHash;
     }
 
+    @SuppressWarnings("unused")
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }

@@ -9,7 +9,6 @@ import androidx.room.Update;
 
 import com.example.taskhero.data.model.User;
 
-@SuppressWarnings("unused")
 @Dao
 public interface UserDao {
 

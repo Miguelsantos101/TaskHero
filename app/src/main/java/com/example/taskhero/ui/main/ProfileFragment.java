@@ -20,7 +20,6 @@ import com.example.taskhero.databinding.FragmentProfileBinding;
 import com.example.taskhero.ui.auth.LoginActivity;
 import com.example.taskhero.viewmodel.ProfileViewModel;
 
-@SuppressWarnings("unused")
 public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;

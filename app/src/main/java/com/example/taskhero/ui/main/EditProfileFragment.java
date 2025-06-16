@@ -20,13 +20,11 @@ import com.example.taskhero.viewmodel.ProfileViewModel;
 
 import java.util.Objects;
 
-@SuppressWarnings("unused")
 public class EditProfileFragment extends BasePhotoFragment {
 
     private FragmentEditProfileBinding binding;
     private ProfileViewModel profileViewModel;
     private User currentUser;
-    private static final String TAG = "EditProfileFragment";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

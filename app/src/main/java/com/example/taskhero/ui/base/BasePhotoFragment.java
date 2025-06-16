@@ -21,9 +21,9 @@ import java.io.InputStream;
 
 public abstract class BasePhotoFragment extends Fragment {
 
-    private static final String TAG = "BasePhotoFragment";
     protected Uri tempImageUri;
     protected Uri selectedImageUri;
+    private static final String TAG = "BasePhotoFragment";
 
     protected ActivityResultLauncher<String> requestPermissionLauncher;
     protected ActivityResultLauncher<Uri> cameraLauncher;

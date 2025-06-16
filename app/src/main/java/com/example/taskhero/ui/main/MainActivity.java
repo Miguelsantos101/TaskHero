@@ -17,7 +17,6 @@ import com.example.taskhero.R;
 import com.example.taskhero.databinding.ActivityMainBinding;
 import com.example.taskhero.util.UIUtils;
 
-@SuppressWarnings("unused")
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
@@ -27,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
             UIUtils.showErrorSnackbar(binding.getRoot(), getString(R.string.error_no_notification_permission));
         }
     });
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadFragment(Fragment fragment, boolean addToBackStack) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_fragment_container, fragment);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment);
         if (addToBackStack) {
             transaction.addToBackStack(null);
         }

@@ -19,12 +19,10 @@ import com.example.taskhero.util.HashUtils;
 import com.example.taskhero.util.UIUtils;
 import com.example.taskhero.viewmodel.AuthViewModel;
 
-@SuppressWarnings("unused")
 public class RegisterFragment extends BasePhotoFragment {
 
     private FragmentRegisterBinding binding;
     private AuthViewModel authViewModel;
-    private static final String TAG = "RegisterFragment";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -20,7 +20,6 @@ import com.example.taskhero.viewmodel.TaskViewModel;
 
 import java.util.Objects;
 
-@SuppressWarnings("unused")
 public class EditTaskFragment extends BaseTaskFormFragment {
 
     private FragmentEditTaskBinding binding;

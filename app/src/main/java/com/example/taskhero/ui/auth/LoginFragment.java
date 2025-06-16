@@ -20,15 +20,13 @@ import com.example.taskhero.util.HashUtils;
 import com.example.taskhero.util.UIUtils;
 import com.example.taskhero.viewmodel.AuthViewModel;
 
-@SuppressWarnings("unused")
 public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding;
     private AuthViewModel authViewModel;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentLoginBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }

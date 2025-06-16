@@ -6,7 +6,6 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 
-@SuppressWarnings("unused")
 @Entity(tableName = "tasks", foreignKeys = @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "user_id", onDelete = ForeignKey.CASCADE))
 public class Task {
 
@@ -43,10 +42,12 @@ public class Task {
         return id;
     }
 
+    @SuppressWarnings("unused")
     public int getUserId() {
         return userId;
     }
 
+    @SuppressWarnings("unused")
     public void setUserId(int userId) {
         this.userId = userId;
     }
