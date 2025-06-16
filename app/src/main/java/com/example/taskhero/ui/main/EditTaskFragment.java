@@ -14,6 +14,7 @@ import com.example.taskhero.R;
 import com.example.taskhero.data.model.Task;
 import com.example.taskhero.databinding.FragmentEditTaskBinding;
 import com.example.taskhero.ui.base.BaseTaskFormFragment;
+import com.example.taskhero.util.NotificationScheduler;
 import com.example.taskhero.util.UIUtils;
 import com.example.taskhero.viewmodel.TaskViewModel;
 
@@ -95,6 +96,9 @@ public class EditTaskFragment extends BaseTaskFormFragment {
             currentTask.setTitle(newTitle);
             currentTask.setDescription(newDescription);
             currentTask.setDueDate(calendar.getTimeInMillis());
+
+            NotificationScheduler.cancelTaskReminder(requireContext(), currentTask);
+            NotificationScheduler.scheduleTaskReminder(requireContext(), currentTask);
 
             taskViewModel.updateTask(currentTask);
 
