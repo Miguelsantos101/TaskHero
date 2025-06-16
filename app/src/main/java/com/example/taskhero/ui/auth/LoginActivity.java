@@ -12,6 +12,7 @@ import com.example.taskhero.R;
 import com.example.taskhero.databinding.ActivityLoginBinding;
 import com.example.taskhero.ui.main.MainActivity;
 import com.example.taskhero.util.Constants;
+import com.example.taskhero.util.NotificationScheduler;
 
 @SuppressWarnings("unused")
 public class LoginActivity extends AppCompatActivity {
@@ -22,6 +23,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         checkUserSession();
+
+        NotificationScheduler.createNotificationChannel(this);
 
         // Restart database if it is corrupted
         // this.deleteDatabase("taskhero_database");

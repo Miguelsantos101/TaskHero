@@ -20,6 +20,7 @@ import com.example.taskhero.R;
 import com.example.taskhero.data.model.Task;
 import com.example.taskhero.data.model.User;
 import com.example.taskhero.databinding.FragmentTaskListBinding;
+import com.example.taskhero.util.NotificationScheduler;
 import com.example.taskhero.util.UIUtils;
 import com.example.taskhero.viewmodel.TaskViewModel;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -61,7 +62,7 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
 
         binding.fabAddTask.setOnClickListener(v -> {
             if (getActivity() instanceof MainActivity) {
-                ((MainActivity) getActivity()).loadFragment(new AddTaskFragment());
+                ((MainActivity) getActivity()).loadFragment(new AddTaskFragment(), true);
             }
         });
     }
@@ -81,7 +82,7 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
         editTaskFragment.setArguments(args);
 
         if (getActivity() instanceof MainActivity) {
-            ((MainActivity) getActivity()).loadFragment(editTaskFragment);
+            ((MainActivity) getActivity()).loadFragment(editTaskFragment, true);
         }
 
     }
@@ -98,6 +99,8 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
 
             taskViewModel.updateUser(currentUser);
 
+            NotificationScheduler.cancelTaskReminder(requireContext(), task);
+
             UIUtils.showSuccessSnackbar(requireView(), "+" + pointsToAdd + " " + getString(R.string.info_points_gain));
         }
 
@@ -111,9 +114,10 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
                 setMessage(R.string.delete_dialog_message)
                 .setNegativeButton(R.string.action_cancel, (dialog, which) -> dialog.dismiss()).
                 setPositiveButton(R.string.action_delete, (dialog, which) -> {
-            taskViewModel.deleteTask(task);
-            UIUtils.showSuccessSnackbar(requireView(), getString(R.string.success_task_deleted));
-        });
+                    taskViewModel.deleteTask(task);
+                    NotificationScheduler.cancelTaskReminder(requireContext(), task);
+                    UIUtils.showSuccessSnackbar(requireView(), getString(R.string.success_task_deleted));
+                });
 
         AlertDialog dialog = builder.create();
         dialog.show();

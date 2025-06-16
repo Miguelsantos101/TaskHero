@@ -44,6 +44,7 @@
     <string name="save_task_button">Salvar Tarefa</string>
     <string name="error_task_title_required">O título da tarefa é obrigatório</string>
     <string name="success_task_saved">Tarefa salva!</string>
+    <string name="error_saving_task">Erro ao salvar a tarefa</string>
     <string name="error_user_not_found">Erro: Usuário não encontrado. Tente fazer login novamente</string>
 
     <string name="delete_dialog_title">Confirmar exclusão</string>
@@ -69,5 +70,11 @@
     <string name="error_saving_new_image">Erro ao salvar a nova imagem</string>
     <string name="success_profile_updated">Perfil atualizado!</string>
     <string name="logout_button">Logout</string>
+
+    <string name="notification_channel_name">Lembretes de Tarefas</string>
+    <string name="notification_channel_description">Canal para notificações de prazo de tarefas</string>
+    <string name="notification_title">Prazo da Tarefa!</string>
+    <string name="notification_text">Sua tarefa %1$s está vencendo</string>
+    <string name="error_no_notification_permission">Sem permissão, os lembretes de tarefas não funcionarão</string>
 
 </resources>

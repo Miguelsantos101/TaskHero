@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.taskhero.R;
 import com.example.taskhero.data.model.Task;
 import com.example.taskhero.databinding.FragmentAddTaskBinding;
+import com.example.taskhero.util.NotificationScheduler;
 import com.example.taskhero.util.UIUtils;
 import com.example.taskhero.viewmodel.TaskViewModel;
 
@@ -42,8 +43,8 @@ public class AddTaskFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         taskViewModel = new ViewModelProvider(this).get(TaskViewModel.class);
-
         setupClickListeners();
+        setupObservers();
     }
 
     private void setupClickListeners() {
@@ -85,6 +86,24 @@ public class AddTaskFragment extends Fragment {
         binding.textViewSelectTime.setText(sdf.format(calendar.getTime()));
     }
 
+    private void setupObservers() {
+        taskViewModel.getNewlyInsertedTaskId().observe(getViewLifecycleOwner(), newTaskId -> {
+            if (newTaskId != null && newTaskId > 0) {
+                taskViewModel.getTaskById(newTaskId.intValue()).observe(getViewLifecycleOwner(), task -> {
+                    if (task != null) {
+                        NotificationScheduler.scheduleTaskReminder(requireContext(), task);
+                        UIUtils.showSuccessSnackbar(requireView(), getString(R.string.success_task_saved));
+                        requireActivity().getSupportFragmentManager().popBackStack();
+                        taskViewModel.onNewTaskHandled();
+                        taskViewModel.getTaskById(newTaskId.intValue()).removeObservers(getViewLifecycleOwner());
+                    }
+                });
+            } else if (newTaskId != null) {
+                UIUtils.showErrorSnackbar(requireView(), getString(R.string.error_saving_task));
+            }
+        });
+    }
+
     private void saveTask() {
         String title = Objects.requireNonNull(binding.editTextTaskTitle.getText()).toString().trim();
         String description = Objects.requireNonNull(binding.editTextTaskDescription.getText()).toString().trim();
@@ -105,12 +124,7 @@ public class AddTaskFragment extends Fragment {
         }
 
         Task task = new Task(userId, title, description, calendar.getTimeInMillis());
-
         taskViewModel.insertTask(task);
-
-        UIUtils.showSuccessSnackbar(requireView(), getString(R.string.success_task_saved));
-
-        requireActivity().getSupportFragmentManager().popBackStack();
     }
 
     @Override

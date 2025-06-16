@@ -44,6 +44,7 @@
     <string name="save_task_button">Save Task</string>
     <string name="error_task_title_required">The task title is required.</string>
     <string name="success_task_saved">Task saved!</string>
+    <string name="error_saving_task">Error saving task</string>
     <string name="error_user_not_found">Error: User not found. Please try logging in again.</string>
 
     <string name="delete_dialog_title">Confirm deletion</string>
@@ -69,5 +70,11 @@
     <string name="error_saving_new_image">Error saving new image</string>
     <string name="success_profile_updated">Profile updated!</string>
     <string name="logout_button">Logout</string>
+
+    <string name="notification_channel_name">Task Reminders</string>
+    <string name="notification_channel_description">Channel for task deadline notifications</string>
+    <string name="notification_title">Task Deadline!</string>
+    <string name="notification_text">Your task %1$s is due</string>
+    <string name="error_no_notification_permission">Without permission, task reminders will not work</string>
 
 </resources>

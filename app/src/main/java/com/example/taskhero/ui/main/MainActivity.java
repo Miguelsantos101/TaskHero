@@ -1,26 +1,43 @@
 package com.example.taskhero.ui.main;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.taskhero.R;
 import com.example.taskhero.databinding.ActivityMainBinding;
+import com.example.taskhero.util.UIUtils;
 
 @SuppressWarnings("unused")
 public class MainActivity extends AppCompatActivity {
 
+    private ActivityMainBinding binding;
+
+    private final ActivityResultLauncher<String> requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+        if (!isGranted) {
+            UIUtils.showErrorSnackbar(binding.getRoot(), getString(R.string.error_no_notification_permission));
+        }
+    });
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
 
-        com.example.taskhero.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        askNotificationPermission();
         setSupportActionBar(binding.toolbar);
 
         if (getSupportActionBar() != null) {
@@ -34,21 +51,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void loadFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
+    private void askNotificationPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+        }
     }
 
     private boolean onNavigationItemSelected(MenuItem item) {
         int itemId = item.getItemId();
 
         if (itemId == R.id.nav_tasks) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new TaskListFragment()).commit();
+            loadFragment(new TaskListFragment(), false);
             return true;
         } else if (itemId == R.id.nav_profile) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new ProfileFragment()).commit();
+            loadFragment(new ProfileFragment(), false);
             return true;
         }
 
         return false;
+    }
+
+    public void loadFragment(Fragment fragment, boolean addToBackStack) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_fragment_container, fragment);
+        if (addToBackStack) {
+            transaction.addToBackStack(null);
+        }
+        transaction.commit();
     }
 }
