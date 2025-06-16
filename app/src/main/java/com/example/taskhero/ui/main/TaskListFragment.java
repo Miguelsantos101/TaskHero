@@ -3,6 +3,7 @@ package com.example.taskhero.ui.main;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,8 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
     private TaskViewModel taskViewModel;
     private TaskAdapter adapter;
     private User currentUser;
+    private SoundPool soundPool;
+    private int taskCompleteSoundId;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
         super.onViewCreated(view, savedInstanceState);
 
         setupRecyclerView();
+        setupSoundPool();
 
         taskViewModel = new ViewModelProvider(this).get(TaskViewModel.class);
 
@@ -71,6 +75,14 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
         binding.recyclerViewTasks.setAdapter(adapter);
     }
 
+    private void setupSoundPool() {
+        SoundPool.Builder builder = new SoundPool.Builder();
+        builder.setMaxStreams(1);
+        soundPool = builder.build();
+
+        taskCompleteSoundId = soundPool.load(getContext(), R.raw.task_complete_sound, 1);
+    }
+
     @Override
     public void onTaskClicked(Task task) {
         EditTaskFragment editTaskFragment = new EditTaskFragment();
@@ -82,7 +94,6 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
         if (getActivity() instanceof MainActivity) {
             ((MainActivity) getActivity()).loadFragment(editTaskFragment, true);
         }
-
     }
 
     @Override
@@ -100,6 +111,9 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
             NotificationScheduler.cancelTaskReminder(requireContext(), task);
 
             UIUtils.showSuccessSnackbar(requireView(), "+" + pointsToAdd + " " + getString(R.string.info_points_gain));
+            if (soundPool != null) {
+                soundPool.play(taskCompleteSoundId, 1.0f, 1.0f, 1, 0, 1.0f);
+            }
         }
 
         adapter.notifyItemChanged(position);
@@ -127,5 +141,10 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+
+        if (soundPool != null) {
+            soundPool.release();
+            soundPool = null;
+        }
     }
 }
