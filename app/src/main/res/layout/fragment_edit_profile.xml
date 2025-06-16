@@ -41,6 +41,7 @@
         android:clickable="true"
         android:contentDescription="@string/select_profile_picture_content_desc"
         android:focusable="true"
+        android:scaleType="centerCrop"
         app:backgroundTint="?attr/colorSurfaceVariant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

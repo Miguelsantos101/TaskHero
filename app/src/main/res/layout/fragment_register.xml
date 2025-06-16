@@ -32,20 +32,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image_view_profile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
         android:contentDescription="@string/select_profile_picture_content_desc"
         android:focusable="true"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_add_a_photo"
+        app:backgroundTint="?attr/colorSurfaceVariant"
         app:layout_constraintBottom_toTopOf="@+id/edit_text_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_view_title_register" />
+        app:layout_constraintTop_toBottomOf="@id/text_view_title_register"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView" />
 
     <EditText
         android:id="@+id/edit_text_name"

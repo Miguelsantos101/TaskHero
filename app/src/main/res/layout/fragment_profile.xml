@@ -38,6 +38,7 @@
         android:layout_height="120dp"
         android:layout_marginTop="32dp"
         android:contentDescription="@string/profile_image_content_desc"
+        android:scaleType="centerCrop"
         app:backgroundTint="?attr/colorSurfaceVariant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

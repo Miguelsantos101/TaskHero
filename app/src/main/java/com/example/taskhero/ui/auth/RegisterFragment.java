@@ -129,6 +129,11 @@ public class RegisterFragment extends Fragment {
         authViewModel.getRegistrationResult().observe(getViewLifecycleOwner(), success -> {
             if (success != null) {
                 if (success) {
+                    binding.editTextName.setText("");
+                    binding.editTextEmailRegister.setText("");
+                    binding.editTextPasswordRegister.setText("");
+                    binding.imageViewProfile.setImageResource(R.drawable.ic_add_a_photo);
+
                     UIUtils.showSuccessSnackbar(requireView(), getString(R.string.success_register));
                     requireActivity().getSupportFragmentManager().popBackStack();
                 } else {
@@ -159,12 +164,6 @@ public class RegisterFragment extends Fragment {
         }
 
         User user = new User(name, email, passwordHash, internalImageUri.toString());
-
-        binding.editTextName.setText("");
-        binding.editTextEmailRegister.setText("");
-        binding.editTextPasswordRegister.setText("");
-        binding.imageViewProfile.setImageURI(null);
-
         authViewModel.registerUser(user);
     }
 

@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -49,7 +48,6 @@ public class ProfileFragment extends Fragment {
                     binding.profileScore.setText(getString(R.string.profile_score, user.getScore()));
                     if (user.getPhotoUri() != null && !user.getPhotoUri().isEmpty()) {
                         binding.profileImage.setImageTintList(null);
-                        binding.profileImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
                         Glide.with(this).load(Uri.parse(user.getPhotoUri())).into(binding.profileImage);
                     }
                 }
@@ -64,7 +62,7 @@ public class ProfileFragment extends Fragment {
                 editFragment.setArguments(args);
 
                 if (getActivity() instanceof MainActivity) {
-                    ((MainActivity) getActivity()).loadFragment(editFragment);
+                    ((MainActivity) getActivity()).loadFragment(editFragment, true);
                 }
             }
         });

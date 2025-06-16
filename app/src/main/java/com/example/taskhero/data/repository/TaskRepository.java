@@ -45,8 +45,8 @@ public class TaskRepository {
         return taskDao.getTasksForUser(userId);
     }
 
-    public void insertTask(Task task) {
-        executorService.execute(() -> taskDao.insert(task));
+    public Future<Long> insertTask(Task task) {
+        return executorService.submit(() -> taskDao.insert(task));
     }
 
     public void updateTask(Task task) {

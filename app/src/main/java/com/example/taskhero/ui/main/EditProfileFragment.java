@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -103,7 +102,6 @@ public class EditProfileFragment extends Fragment {
         binding.editTextEmailEdit.setText(currentUser.getEmail());
         if (currentUser.getPhotoUri() != null && !currentUser.getPhotoUri().isEmpty()) {
             binding.imageViewEditProfile.setImageTintList(null);
-            binding.imageViewEditProfile.setScaleType(ImageView.ScaleType.CENTER_CROP);
             Glide.with(this).load(Uri.parse(currentUser.getPhotoUri())).into(binding.imageViewEditProfile);
         }
     }
