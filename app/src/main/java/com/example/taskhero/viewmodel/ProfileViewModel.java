@@ -19,6 +19,7 @@ public class ProfileViewModel extends AndroidViewModel {
     private final TaskRepository repository;
     private final MutableLiveData<Boolean> updateSuccess = new MutableLiveData<>();
     private final MutableLiveData<String> updateError = new MutableLiveData<>();
+    private static final String TAG = "ProfileViewModel";
 
 
     public ProfileViewModel(@NonNull Application application) {
@@ -57,7 +58,7 @@ public class ProfileViewModel extends AndroidViewModel {
                     updateError.postValue(getApplication().getString(R.string.error_email_already_exists));
                 }
             } catch (Exception e) {
-                Log.e("ProfileViewModel", "Error checking email", e);
+                Log.e(TAG, "Error checking email", e);
                 updateError.postValue(getApplication().getString(R.string.error_verifying_email));
             }
         } else {
