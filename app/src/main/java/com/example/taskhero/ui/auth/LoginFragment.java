@@ -20,6 +20,8 @@ import com.example.taskhero.util.HashUtils;
 import com.example.taskhero.util.UIUtils;
 import com.example.taskhero.viewmodel.AuthViewModel;
 
+import java.util.Objects;
+
 public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding;
@@ -73,8 +75,8 @@ public class LoginFragment extends Fragment {
     }
 
     private void handleLogin() {
-        String email = binding.editTextEmailLogin.getText().toString().trim();
-        String password = binding.editTextPasswordLogin.getText().toString().trim();
+        String email = Objects.requireNonNull(binding.editTextEmailLogin.getText()).toString().trim();
+        String password = Objects.requireNonNull(binding.editTextPasswordLogin.getText()).toString().trim();
 
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
             UIUtils.showErrorSnackbar(requireView(), getString(R.string.login_error_all_fields_required));

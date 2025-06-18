@@ -30,7 +30,7 @@
     <string name="register_error_name_required">Name cannot be empty</string>
     <string name="register_error_email_required">Email cannot be empty</string>
     <string name="register_error_password_required">Password cannot be empty</string>
-    <string name="register_error_all_fields_required">All fields are required</string>
+    <string name="register_error_all_fields_required">All fields and a photo are required</string>
     <string name="register_snackbar_error">Registration error. The email may already be in use</string>
     <string name="register_error_invalid_email">Please enter a valid email address</string>
     <string name="register_error_password_too_short">Password must be at least 3 characters long</string>
