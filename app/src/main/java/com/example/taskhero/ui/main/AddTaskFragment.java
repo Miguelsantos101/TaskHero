@@ -63,14 +63,14 @@ public class AddTaskFragment extends BaseTaskFormFragment {
                 taskViewModel.getTaskById(newTaskId.intValue()).observe(getViewLifecycleOwner(), task -> {
                     if (task != null) {
                         NotificationScheduler.scheduleTaskReminder(requireContext(), task);
-                        UIUtils.showSuccessSnackbar(requireView(), getString(R.string.success_task_saved));
+                        UIUtils.showSuccessSnackbar(requireView(), getString(R.string.task_form_snackbar_add_success));
                         requireActivity().getSupportFragmentManager().popBackStack();
                         taskViewModel.onNewTaskHandled();
                         taskViewModel.getTaskById(newTaskId.intValue()).removeObservers(getViewLifecycleOwner());
                     }
                 });
             } else if (newTaskId != null) {
-                UIUtils.showErrorSnackbar(requireView(), getString(R.string.error_saving_task));
+                UIUtils.showErrorSnackbar(requireView(), getString(R.string.task_form_snackbar_add_error));
             }
         });
     }
@@ -80,7 +80,7 @@ public class AddTaskFragment extends BaseTaskFormFragment {
         String description = Objects.requireNonNull(binding.editTextTaskDescription.getText()).toString().trim();
 
         if (title.isEmpty()) {
-            binding.textInputLayoutTitle.setError(getString(R.string.error_task_title_required));
+            binding.textInputLayoutTitle.setError(getString(R.string.task_form_error_title_required));
             return;
         } else {
             binding.textInputLayoutTitle.setError(null);
@@ -90,7 +90,7 @@ public class AddTaskFragment extends BaseTaskFormFragment {
         int userId = prefs.getInt("LOGGED_IN_USER_ID", -1);
 
         if (userId == -1) {
-            UIUtils.showErrorSnackbar(requireView(), getString(R.string.error_user_not_found));
+            UIUtils.showErrorSnackbar(requireView(), getString(R.string.common_error_user_not_found));
             return;
         }
 

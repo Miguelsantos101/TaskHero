@@ -110,7 +110,7 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
 
             NotificationScheduler.cancelTaskReminder(requireContext(), task);
 
-            UIUtils.showSuccessSnackbar(requireView(), "+" + pointsToAdd + " " + getString(R.string.info_points_gain));
+            UIUtils.showSuccessSnackbar(requireView(), "+" + pointsToAdd + " " + getString(R.string.task_list_snackbar_points_gain));
             if (soundPool != null) {
                 soundPool.play(taskCompleteSoundId, 1.0f, 1.0f, 1, 0, 1.0f);
             }
@@ -122,13 +122,13 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
     @Override
     public void onTaskDeleted(Task task) {
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireContext()).
-                setTitle(R.string.delete_dialog_title).
-                setMessage(R.string.delete_dialog_message)
-                .setNegativeButton(R.string.action_cancel, (dialog, which) -> dialog.dismiss()).
-                setPositiveButton(R.string.action_delete, (dialog, which) -> {
+                setTitle(R.string.dialog_confirm_delete_title).
+                setMessage(R.string.dialog_confirm_delete_message)
+                .setNegativeButton(R.string.common_action_cancel, (dialog, which) -> dialog.dismiss()).
+                setPositiveButton(R.string.common_action_delete, (dialog, which) -> {
                     taskViewModel.deleteTask(task);
                     NotificationScheduler.cancelTaskReminder(requireContext(), task);
-                    UIUtils.showSuccessSnackbar(requireView(), getString(R.string.success_task_deleted));
+                    UIUtils.showSuccessSnackbar(requireView(), getString(R.string.task_list_snackbar_task_deleted));
                 });
 
         AlertDialog dialog = builder.create();

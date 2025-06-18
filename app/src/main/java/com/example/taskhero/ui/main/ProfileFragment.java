@@ -44,7 +44,7 @@ public class ProfileFragment extends Fragment {
                 if (user != null) {
                     binding.profileName.setText(user.getName());
                     binding.profileEmail.setText(user.getEmail());
-                    binding.profileScore.setText(getString(R.string.profile_score, user.getScore()));
+                    binding.profileScore.setText(getString(R.string.profile_text_score_format, user.getScore()));
                     if (user.getPhotoUri() != null && !user.getPhotoUri().isEmpty()) {
                         binding.profileImage.setImageTintList(null);
                         Glide.with(this).load(Uri.parse(user.getPhotoUri())).into(binding.profileImage);

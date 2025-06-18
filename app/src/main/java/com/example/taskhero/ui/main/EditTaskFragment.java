@@ -84,7 +84,7 @@ public class EditTaskFragment extends BaseTaskFormFragment {
             String newTitle = Objects.requireNonNull(binding.editTextTaskTitle.getText()).toString().trim();
 
             if (newTitle.isEmpty()) {
-                binding.textInputLayoutTitle.setError(getString(R.string.error_task_title_required));
+                binding.textInputLayoutTitle.setError(getString(R.string.task_form_error_title_required));
                 return;
             } else {
                 binding.textInputLayoutTitle.setError(null);
@@ -101,7 +101,7 @@ public class EditTaskFragment extends BaseTaskFormFragment {
 
             taskViewModel.updateTask(currentTask);
 
-            UIUtils.showSuccessSnackbar(requireView(), getString(R.string.success_task_updated));
+            UIUtils.showSuccessSnackbar(requireView(), getString(R.string.task_form_snackbar_edit_success));
 
             requireActivity().getSupportFragmentManager().popBackStack();
         }

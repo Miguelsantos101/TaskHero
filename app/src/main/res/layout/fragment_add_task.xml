@@ -24,7 +24,7 @@
         android:id="@+id/text_view_add_task_title"
         style="@style/Widget.TaskHero.TextView"
         android:layout_marginTop="24dp"
-        android:text="@string/add_task_title"
+        android:text="@string/task_form_add_title"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
@@ -34,7 +34,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout_title"
         style="@style/Widget.TaskHero.TextInputLayout"
-        android:hint="@string/title"
+        android:hint="@string/common_label_title"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/text_view_add_task_title">
@@ -51,7 +51,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout_description"
         style="@style/Widget.TaskHero.TextInputLayout"
-        android:hint="@string/description"
+        android:hint="@string/common_label_description"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/text_input_layout_title">
@@ -70,7 +70,7 @@
         style="@style/Widget.TaskHero.TextView"
         android:background="?attr/editTextBackground"
         android:gravity="start"
-        android:text="@string/select_due_date"
+        android:text="@string/task_form_label_due_date"
         android:textSize="16sp"
         app:drawableEndCompat="@drawable/ic_calendar"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/editTextBackground"
         android:gravity="start"
-        android:text="@string/select_time"
+        android:text="@string/task_form_label_time"
         android:textSize="16sp"
         app:drawableEndCompat="@drawable/ic_time"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
@@ -94,7 +94,7 @@
         android:id="@+id/button_save_task"
         style="@style/Widget.TaskHero.Button"
         android:layout_marginBottom="24dp"
-        android:text="@string/save_task_button"
+        android:text="@string/task_form_button_save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start" />

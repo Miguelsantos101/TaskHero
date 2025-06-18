@@ -39,7 +39,7 @@ public abstract class BasePhotoFragment extends Fragment {
                         launchCamera();
                     } else {
                         if (getView() != null)
-                            UIUtils.showErrorSnackbar(getView(), getString(R.string.error_no_camera_permission));
+                            UIUtils.showErrorSnackbar(getView(), getString(R.string.photo_error_no_camera_permission));
                     }
                 });
 
@@ -63,7 +63,7 @@ public abstract class BasePhotoFragment extends Fragment {
     protected void showPhotoSourceDialog() {
         final CharSequence[] options = getResources().getStringArray(R.array.photo_source_options);
         new MaterialAlertDialogBuilder(requireContext())
-                .setTitle(R.string.dialog_title_photo_source)
+                .setTitle(R.string.photo_dialog_title_source)
                 .setItems(options, (dialog, which) -> {
                     if (which == 0) {
                         checkPermissionAndTakePhoto();
@@ -90,7 +90,7 @@ public abstract class BasePhotoFragment extends Fragment {
         } catch (IOException e) {
             Log.e(TAG, "Error creating temp file for camera", e);
             if (getView() != null)
-                UIUtils.showErrorSnackbar(getView(), getString(R.string.error_preparing_camera));
+                UIUtils.showErrorSnackbar(getView(), getString(R.string.photo_error_preparing_camera));
         }
     }
 

@@ -79,7 +79,7 @@ public class TaskAdapter extends ListAdapter<Task, TaskAdapter.TaskViewHolder> {
                 String dateString = android.text.format.DateFormat.getMediumDateFormat(context).format(date);
                 String timeString = android.text.format.DateFormat.getTimeFormat(context).format(date);
 
-                String fullDateTimeString = context.getString(R.string.task_due_date_format, dateString, timeString);
+                String fullDateTimeString = context.getString(R.string.task_list_item_due_date_format, dateString, timeString);
 
                 binding.textViewDueDate.setText(fullDateTimeString);
                 binding.textViewDueDate.setVisibility(View.VISIBLE);

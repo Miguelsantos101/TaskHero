@@ -1,80 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- App Wide -->
     <string name="app_name">TaskHero</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="name">Name</string>
-    <string name="title">Title</string>
-    <string name="description">Description</string>
 
-    <string name="login_title">Login</string>
-    <string name="login_button">Login</string>
-    <string name="login_button_content_desc">Log into the application</string>
-    <string name="go_to_register">Don\'t have an account? Sign Up</string>
-    <string name="error_invalid_credentials">Invalid email or password</string>
-    <string name="error_fill_all_fields">Please fill in all fields</string>
-    <string name="success_login">Login successful!</string>
+    <!-- Common / Generic -->
+    <string name="common_label_email">Email</string>
+    <string name="common_label_password">Password</string>
+    <string name="common_label_name">Name</string>
+    <string name="common_label_title">Title</string>
+    <string name="common_label_description">Description</string>
+    <string name="common_action_delete">Delete</string>
+    <string name="common_action_cancel">Cancel</string>
+    <string name="common_action_save_changes">Save Changes</string>
+    <string name="common_error_user_not_found">Error: User not found. Please try logging in again</string>
 
-    <string name="register_title">Create Account</string>
-    <string name="select_profile_picture_content_desc">Select profile picture</string>
-    <string name="dialog_title_photo_source">Choose a source</string>
+    <!-- Login Screen -->
+    <string name="login_screen_title">Login</string>
+    <string name="login_button_text">Login</string>
+    <string name="login_button_content_description">Log into the application</string>
+    <string name="login_navigation_to_register">Don\'t have an account? Sign Up</string>
+    <string name="login_error_invalid_credentials">Invalid email or password</string>
+    <string name="login_error_all_fields_required">Please fill in all fields</string>
+    <string name="login_success_message">Login successful!</string>
+
+    <!-- Registration Screen -->
+    <string name="register_screen_title">Create Account</string>
+    <string name="register_button_text">Sign Up</string>
+    <string name="register_error_all_fields_required">All fields and the photo are required</string>
+    <string name="register_snackbar_error">Registration error. The email may already be in use</string>
+    <string name="register_snackbar_success">Registration successful!</string>
+
+    <!-- Photo Selection -->
+    <string name="photo_image_content_desc">Select profile picture</string>
+    <string name="photo_dialog_title_source">Choose a source</string>
     <string-array name="photo_source_options">
         <item>Take Photo</item>
         <item>Choose from Gallery</item>
     </string-array>
-    <string name="error_preparing_camera">Error preparing camera</string>
-    <string name="error_no_camera_permission">Camera permission denied</string>
-    <string name="register_button">Sign Up</string>
-    <string name="success_register">Registration successful!</string>
-    <string name="error_register">Registration error. The email may already be in use</string>
-    <string name="error_all_fields_and_photo_required">All fields and the photo are required</string>
-    <string name="error_saving_image">Error saving image</string>
+    <string name="photo_error_preparing_camera">Error preparing camera</string>
+    <string name="photo_error_no_camera_permission">Camera permission denied</string>
+    <string name="photo_error_saving_image">Error saving image</string>
 
-    <string name="menu_tasks">Tasks</string>
-    <string name="menu_profile">Profile</string>
+    <!-- Bottom Navigation Menu -->
+    <string name="main_bottom_nav_tasks">Tasks</string>
+    <string name="main_bottom_nav_profile">Profile</string>
 
-    <string name="task_list_empty">No tasks yet!</string>
-    <string name="task_due_date_format">Due: %1$s at %2$s</string>
-    <string name="add_new_task_content_desc">Add new task</string>
-    <string name="info_points_gain"> points!</string>
+    <!-- Task List Screen -->
+    <string name="task_list_text_empty">No tasks yet!</string>
+    <string name="task_list_fab_content_desc">Add new task</string>
+    <string name="task_list_snackbar_points_gain">points!</string>
+    <string name="task_list_snackbar_task_deleted">Task deleted!</string>
+    <string name="task_list_item_delete_content_desc">Delete task</string>
+    <string name="task_list_item_due_date_format">Due: %1$s at %2$s</string>
 
-    <string name="add_task_title">New Task</string>
-    <string name="select_due_date">Select a due date</string>
-    <string name="select_time">Select the time</string>
-    <string name="save_task_button">Save Task</string>
-    <string name="error_task_title_required">The task title is required.</string>
-    <string name="success_task_saved">Task saved!</string>
-    <string name="error_saving_task">Error saving task</string>
-    <string name="error_user_not_found">Error: User not found. Please try logging in again.</string>
+    <!-- Add/Edit Task Screen -->
+    <string name="task_form_add_title">New Task</string>
+    <string name="task_form_edit_title">Edit Task</string>
+    <string name="task_form_label_due_date">Select a due date</string>
+    <string name="task_form_label_time">Select the time</string>
+    <string name="task_form_button_save">Save Task</string>
+    <string name="task_form_error_title_required">The task title is required.</string>
+    <string name="task_form_snackbar_add_success">Task saved!</string>
+    <string name="task_form_snackbar_edit_success">Task updated!</string>
+    <string name="task_form_snackbar_add_error">Error saving task</string>
 
-    <string name="delete_dialog_title">Confirm deletion</string>
-    <string name="delete_dialog_message">Are you sure you want to delete this task? This action cannot be undone.</string>
-    <string name="action_delete">Delete</string>
-    <string name="action_cancel">Cancel</string>
-    <string name="success_task_deleted">Task deleted!</string>
-    <string name="delete_task_content_desc">Delete task</string>
+    <!-- Confirmation Task Deletion Dialog -->
+    <string name="dialog_confirm_delete_title">Confirm Deletion</string>
+    <string name="dialog_confirm_delete_message">Are you sure you want to delete this task? This action cannot be undone.</string>
 
-    <string name="edit_task_title">Edit Task</string>
-    <string name="success_task_updated">Task updated!</string>
+    <!-- Profile Screen -->
+    <string name="profile_text_score_format">Score: %1$d</string>
+    <string name="profile_image_content_desc">User profile image</string>
+    <string name="profile_button_edit_content_desc">Edit Profile</string>
+    <string name="profile_button_logout">Logout</string>
 
-    <string name="profile_score">Score: %1$d</string>
-    <string name="profile_image_content_desc">Image of the user</string>
-    <string name="edit_profile_content_desc">Profile Editing</string>
+    <!-- Edit Profile Screen -->
+    <string name="edit_profile_screen_title">Edit Profile</string>
+    <string name="edit_profile_error_name_required">Name cannot be empty</string>
+    <string name="edit_profile_error_email_required">Email cannot be empty</string>
+    <string name="edit_profile_snackbar_error_email_exists">Email already in use</string>
+    <string name="edit_profile_snackbar_error_verifying_email">Error verifying email</string>
+    <string name="edit_profile_snackbar_success">Profile updated!</string>
+    <string name="edit_profile_error_saving_image">Error saving new image</string>
 
-    <string name="edit_profile_title">Edit Profile</string>
-    <string name="action_save_changes">Save Changes</string>
-    <string name="error_name_required">Name cannot be empty</string>
-    <string name="error_email_required">Email cannot be empty</string>
-    <string name="error_email_already_exists">Email already in use</string>
-    <string name="error_verifying_email">Error verifying email</string>
-    <string name="error_saving_new_image">Error saving new image</string>
-    <string name="success_profile_updated">Profile updated!</string>
-    <string name="logout_button">Logout</string>
-
+    <!-- Notifications -->
     <string name="notification_channel_name">Task Reminders</string>
     <string name="notification_channel_description">Channel for task deadline notifications</string>
     <string name="notification_title">Task Deadline!</string>
     <string name="notification_text">Your task %1$s is due</string>
-    <string name="error_no_notification_permission">Without permission, task reminders will not work</string>
-
+    <string name="notification_error_no_permission">Without permission, task reminders will not work</string>
 </resources>

@@ -54,7 +54,7 @@ public class LoginFragment extends Fragment {
     private void observeViewModel() {
         authViewModel.getLoginResult().observe(getViewLifecycleOwner(), user -> {
             if (user != null) {
-                UIUtils.showSuccessSnackbar(requireView(), getString(R.string.success_login));
+                UIUtils.showSuccessSnackbar(requireView(), getString(R.string.login_success_message));
 
                 saveUserSession(user.getId());
 
@@ -62,7 +62,7 @@ public class LoginFragment extends Fragment {
                     ((LoginActivity) getActivity()).navigateToMain();
                 }
             } else {
-                UIUtils.showErrorSnackbar(requireView(), getString(R.string.error_invalid_credentials));
+                UIUtils.showErrorSnackbar(requireView(), getString(R.string.login_error_invalid_credentials));
             }
         });
     }
@@ -72,7 +72,7 @@ public class LoginFragment extends Fragment {
         String password = binding.editTextPasswordLogin.getText().toString().trim();
 
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-            UIUtils.showErrorSnackbar(requireView(), getString(R.string.error_fill_all_fields));
+            UIUtils.showErrorSnackbar(requireView(), getString(R.string.login_error_all_fields_required));
             return;
         }
 

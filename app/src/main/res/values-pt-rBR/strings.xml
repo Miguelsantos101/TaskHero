@@ -1,80 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- App Wide -->
     <string name="app_name">TaskHero</string>
-    <string name="email">E-mail</string>
-    <string name="password">Senha</string>
-    <string name="name">Nome</string>
-    <string name="title">Título</string>
-    <string name="description">Descrição</string>
 
-    <string name="login_title">Login</string>
-    <string name="login_button">Entrar</string>
-    <string name="login_button_content_desc">Efetuar o login no aplicativo</string>
-    <string name="go_to_register">Não tem uma conta? Registre-se</string>
-    <string name="error_invalid_credentials">E-mail ou senha inválidos</string>
-    <string name="error_fill_all_fields">Por favor, preencha todos os campos</string>
-    <string name="success_login">Login bem-sucedido!</string>
+    <!-- Comum / Genérico -->
+    <string name="common_label_email">E-mail</string>
+    <string name="common_label_password">Senha</string>
+    <string name="common_label_name">Nome</string>
+    <string name="common_label_title">Título</string>
+    <string name="common_label_description">Descrição</string>
+    <string name="common_action_delete">Excluir</string>
+    <string name="common_action_cancel">Cancelar</string>
+    <string name="common_action_save_changes">Salvar Alterações</string>
+    <string name="common_error_user_not_found">Erro: Usuário não encontrado. Por favor, tente fazer login novamente</string>
 
-    <string name="register_title">Criar Conta</string>
-    <string name="select_profile_picture_content_desc">Selecionar foto do perfil</string>
-    <string name="dialog_title_photo_source">Escolha uma fonte</string>
+    <!-- Tela de Login -->
+    <string name="login_screen_title">Login</string>
+    <string name="login_button_text">Entrar</string>
+    <string name="login_button_content_description">Entrar no aplicativo</string>
+    <string name="login_navigation_to_register">Não tem uma conta? Cadastre-se</string>
+    <string name="login_error_invalid_credentials">E-mail ou senha inválidos</string>
+    <string name="login_error_all_fields_required">Por favor, preencha todos os campos</string>
+    <string name="login_success_message">Login realizado com sucesso!</string>
+
+    <!-- Tela de Registro -->
+    <string name="register_screen_title">Criar Conta</string>
+    <string name="register_button_text">Cadastrar</string>
+    <string name="register_error_all_fields_required">Todos os campos e a foto são obrigatórios</string>
+    <string name="register_snackbar_error">Erro no cadastro. O e-mail pode já estar em uso</string>
+    <string name="register_snackbar_success">Cadastro realizado com sucesso!</string>
+
+    <!-- Seleção de Foto -->
+    <string name="photo_image_content_desc">Selecionar foto de perfil</string>
+    <string name="photo_dialog_title_source">Escolher uma fonte</string>
     <string-array name="photo_source_options">
         <item>Tirar Foto</item>
         <item>Escolher da Galeria</item>
     </string-array>
-    <string name="error_preparing_camera">Erro ao preparar a câmera</string>
-    <string name="error_no_camera_permission">Permissão de câmera negada</string>
-    <string name="register_button">Registrar</string>
-    <string name="success_register">Registro bem-sucedido!</string>
-    <string name="error_register">Erro no registro. O e-mail pode já estar em uso</string>
-    <string name="error_all_fields_and_photo_required">Todos os campos e a foto são obrigatórios</string>
-    <string name="error_saving_image">Erro ao salvar a imagem</string>
+    <string name="photo_error_preparing_camera">Erro ao preparar a câmera</string>
+    <string name="photo_error_no_camera_permission">Permissão da câmera negada</string>
+    <string name="photo_error_saving_image">Erro ao salvar a imagem</string>
 
-    <string name="menu_tasks">Tarefas</string>
-    <string name="menu_profile">Perfil</string>
+    <!-- Menu de Navegação Inferior -->
+    <string name="main_bottom_nav_tasks">Tarefas</string>
+    <string name="main_bottom_nav_profile">Perfil</string>
 
-    <string name="task_list_empty">Nenhuma tarefa ainda!</string>
-    <string name="task_due_date_format">Vence em: %1$s às %2$s</string>
-    <string name="add_new_task_content_desc">Adicionar nova tarefa</string>
-    <string name="info_points_gain"> pontos!</string>
+    <!-- Tela de Lista de Tarefas -->
+    <string name="task_list_text_empty">Nenhuma tarefa ainda!</string>
+    <string name="task_list_fab_content_desc">Adicionar nova tarefa</string>
+    <string name="task_list_snackbar_points_gain">pontos!</string>
+    <string name="task_list_snackbar_task_deleted">Tarefa excluída!</string>
+    <string name="task_list_item_delete_content_desc">Excluir tarefa</string>
+    <string name="task_list_item_due_date_format">Vencimento: %1$s às %2$s</string>
 
-    <string name="add_task_title">Nova Tarefa</string>
-    <string name="select_due_date">Selecione a data de vencimento</string>
-    <string name="select_time">Selecione a hora</string>
-    <string name="save_task_button">Salvar Tarefa</string>
-    <string name="error_task_title_required">O título da tarefa é obrigatório</string>
-    <string name="success_task_saved">Tarefa salva!</string>
-    <string name="error_saving_task">Erro ao salvar a tarefa</string>
-    <string name="error_user_not_found">Erro: Usuário não encontrado. Tente fazer login novamente</string>
+    <!-- Tela de Adição/Edição de Tarefa -->
+    <string name="task_form_add_title">Nova Tarefa</string>
+    <string name="task_form_edit_title">Editar Tarefa</string>
+    <string name="task_form_label_due_date">Selecionar data de vencimento</string>
+    <string name="task_form_label_time">Selecionar horário</string>
+    <string name="task_form_button_save">Salvar Tarefa</string>
+    <string name="task_form_error_title_required">O título da tarefa é obrigatório.</string>
+    <string name="task_form_snackbar_add_success">Tarefa salva!</string>
+    <string name="task_form_snackbar_edit_success">Tarefa atualizada!</string>
+    <string name="task_form_snackbar_add_error">Erro ao salvar a tarefa</string>
 
-    <string name="delete_dialog_title">Confirmar exclusão</string>
-    <string name="delete_dialog_message">Você tem certeza que deseja excluir esta tarefa? Esta ação não pode ser desfeita.</string>
-    <string name="action_delete">Excluir</string>
-    <string name="action_cancel">Cancelar</string>
-    <string name="success_task_deleted">Tarefa excluída!</string>
-    <string name="delete_task_content_desc">Delete task</string>
+    <!-- Diálogo de Confirmação de Exclusão -->
+    <string name="dialog_confirm_delete_title">Confirmar Exclusão</string>
+    <string name="dialog_confirm_delete_message">Tem certeza de que deseja excluir esta tarefa? Esta ação não poderá ser desfeita.</string>
 
-    <string name="edit_task_title">Editar Tarefa</string>
-    <string name="success_task_updated">Tarefa atualizada!</string>
+    <!-- Tela de Perfil -->
+    <string name="profile_text_score_format">Pontuação: %1$d</string>
+    <string name="profile_image_content_desc">Imagem de perfil do usuário</string>
+    <string name="profile_button_edit_content_desc">Editar Perfil</string>
+    <string name="profile_button_logout">Sair</string>
 
-    <string name="profile_score">Pontuação: %1$d</string>
-    <string name="profile_image_content_desc">Imagem do usuário</string>
-    <string name="edit_profile_content_desc">Edição de Perfil</string>
+    <!-- Tela de Edição de Perfil -->
+    <string name="edit_profile_screen_title">Editar Perfil</string>
+    <string name="edit_profile_error_name_required">O nome não pode estar vazio</string>
+    <string name="edit_profile_error_email_required">O e-mail não pode estar vazio</string>
+    <string name="edit_profile_snackbar_error_email_exists">E-mail já está em uso</string>
+    <string name="edit_profile_snackbar_error_verifying_email">Erro ao verificar o e-mail</string>
+    <string name="edit_profile_snackbar_success">Perfil Atualizado!</string>
+    <string name="edit_profile_error_saving_image">Erro ao salvar nova imagem</string>
 
-    <string name="edit_profile_title">Editar Perfil</string>
-    <string name="action_save_changes">Salvar Alterações</string>
-    <string name="error_name_required">O nome não pode ser vazio</string>
-    <string name="error_email_required">O e-mail não pode ser vazio</string>
-    <string name="error_email_already_exists">O e-mail já está em uso</string>
-    <string name="error_verifying_email">Erro ao verificar o e-mail</string>
-    <string name="error_saving_new_image">Erro ao salvar a nova imagem</string>
-    <string name="success_profile_updated">Perfil atualizado!</string>
-    <string name="logout_button">Logout</string>
-
-    <string name="notification_channel_name">Lembretes de Tarefas</string>
-    <string name="notification_channel_description">Canal para notificações de prazo de tarefas</string>
+    <!-- Notificações -->
+    <string name="notification_channel_name">Lembretes de Tarefa</string>
+    <string name="notification_channel_description">Canal para notificações de prazos de tarefas</string>
     <string name="notification_title">Prazo da Tarefa!</string>
     <string name="notification_text">Sua tarefa %1$s está vencendo</string>
-    <string name="error_no_notification_permission">Sem permissão, os lembretes de tarefas não funcionarão</string>
-
+    <string name="notification_error_no_permission">Sem permissão, os lembretes de tarefa não funcionarão</string>
 </resources>

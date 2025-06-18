@@ -100,7 +100,7 @@ public class EditProfileFragment extends BasePhotoFragment {
     private boolean validateName() {
         String newName = Objects.requireNonNull(binding.editTextNameEdit.getText()).toString().trim();
         if (newName.isEmpty()) {
-            binding.textInputLayoutNameEdit.setError(getString(R.string.error_name_required));
+            binding.textInputLayoutNameEdit.setError(getString(R.string.edit_profile_error_name_required));
             return false;
         } else {
             binding.textInputLayoutNameEdit.setError(null);
@@ -111,7 +111,7 @@ public class EditProfileFragment extends BasePhotoFragment {
     private boolean validateEmail() {
         String newEmail = Objects.requireNonNull(binding.editTextEmailEdit.getText()).toString().trim();
         if (newEmail.isEmpty()) {
-            binding.textInputLayoutEmailEdit.setError(getString(R.string.error_email_required));
+            binding.textInputLayoutEmailEdit.setError(getString(R.string.edit_profile_error_email_required));
             return false;
         } else {
             binding.textInputLayoutEmailEdit.setError(null);
@@ -122,7 +122,7 @@ public class EditProfileFragment extends BasePhotoFragment {
     private void setupObservers() {
         profileViewModel.getUpdateSuccess().observe(getViewLifecycleOwner(), success -> {
             if (success != null && success) {
-                UIUtils.showSuccessSnackbar(requireView(), getString(R.string.success_profile_updated));
+                UIUtils.showSuccessSnackbar(requireView(), getString(R.string.edit_profile_snackbar_success));
                 requireActivity().getSupportFragmentManager().popBackStack();
                 profileViewModel.onUpdateHandled();
             }
@@ -142,7 +142,7 @@ public class EditProfileFragment extends BasePhotoFragment {
             if (internalUri != null) {
                 return internalUri.toString();
             } else {
-                UIUtils.showErrorSnackbar(requireView(), getString(R.string.error_saving_new_image));
+                UIUtils.showErrorSnackbar(requireView(), getString(R.string.edit_profile_error_saving_image));
                 return null;
             }
         }

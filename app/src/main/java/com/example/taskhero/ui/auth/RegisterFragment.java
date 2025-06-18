@@ -55,10 +55,10 @@ public class RegisterFragment extends BasePhotoFragment {
                     binding.editTextPasswordRegister.setText("");
                     binding.imageViewProfile.setImageResource(R.drawable.ic_add_a_photo);
 
-                    UIUtils.showSuccessSnackbar(requireView(), getString(R.string.success_register));
+                    UIUtils.showSuccessSnackbar(requireView(), getString(R.string.register_snackbar_success));
                     requireActivity().getSupportFragmentManager().popBackStack();
                 } else {
-                    UIUtils.showErrorSnackbar(requireView(), getString(R.string.error_register));
+                    UIUtils.showErrorSnackbar(requireView(), getString(R.string.register_snackbar_error));
                 }
                 authViewModel.onRegistrationHandled();
             }
@@ -71,7 +71,7 @@ public class RegisterFragment extends BasePhotoFragment {
         String password = binding.editTextPasswordRegister.getText().toString().trim();
 
         if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || selectedImageUri == null) {
-            UIUtils.showErrorSnackbar(requireView(), getString(R.string.error_all_fields_and_photo_required));
+            UIUtils.showErrorSnackbar(requireView(), getString(R.string.register_error_all_fields_required));
             return;
         }
 
@@ -80,7 +80,7 @@ public class RegisterFragment extends BasePhotoFragment {
         Uri internalImageUri = saveImageToInternalStorage(selectedImageUri);
 
         if (internalImageUri == null) {
-            UIUtils.showErrorSnackbar(requireView(), getString(R.string.error_saving_image));
+            UIUtils.showErrorSnackbar(requireView(), getString(R.string.photo_error_saving_image));
             return;
         }
 

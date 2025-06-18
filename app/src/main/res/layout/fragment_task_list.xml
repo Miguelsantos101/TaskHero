@@ -16,13 +16,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/task_list_empty"
+        android:text="@string/task_list_text_empty"
         android:visibility="gone" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add_task"
         style="@style/Widget.TaskHero.FloatingActionButton"
-        android:contentDescription="@string/add_new_task_content_desc"
+        android:contentDescription="@string/task_list_fab_content_desc"
         android:src="@drawable/ic_add" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

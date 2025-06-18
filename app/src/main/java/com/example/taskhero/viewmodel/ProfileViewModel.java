@@ -55,11 +55,11 @@ public class ProfileViewModel extends AndroidViewModel {
                     repository.updateUser(userToUpdate);
                     updateSuccess.postValue(true);
                 } else {
-                    updateError.postValue(getApplication().getString(R.string.error_email_already_exists));
+                    updateError.postValue(getApplication().getString(R.string.edit_profile_snackbar_error_email_exists));
                 }
             } catch (Exception e) {
                 Log.e(TAG, "Error checking email", e);
-                updateError.postValue(getApplication().getString(R.string.error_verifying_email));
+                updateError.postValue(getApplication().getString(R.string.edit_profile_snackbar_error_verifying_email));
             }
         } else {
             repository.updateUser(userToUpdate);
