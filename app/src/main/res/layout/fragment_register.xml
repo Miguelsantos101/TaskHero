@@ -44,44 +44,63 @@
         android:scaleType="centerCrop"
         android:src="@drawable/ic_add_a_photo"
         app:backgroundTint="?attr/colorSurfaceVariant"
-        app:layout_constraintBottom_toTopOf="@+id/edit_text_name"
+        app:layout_constraintBottom_toTopOf="@+id/text_input_layout_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_view_title_register"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImageView" />
 
-    <EditText
-        android:id="@+id/edit_text_name"
-        style="@style/Widget.TaskHero.EditText"
-        android:autofillHints="name"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_name"
+        style="@style/Widget.TaskHero.TextInputLayout"
         android:hint="@string/common_label_name"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/edit_text_email_register"
+        app:layout_constraintBottom_toTopOf="@+id/text_input_layout_email_register"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/image_view_profile" />
+        app:layout_constraintTop_toBottomOf="@id/image_view_profile">
 
-    <EditText
-        android:id="@+id/edit_text_email_register"
-        style="@style/Widget.TaskHero.EditText"
-        android:autofillHints="emailAddress"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="name"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_email_register"
+        style="@style/Widget.TaskHero.TextInputLayout"
         android:hint="@string/common_label_email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/edit_text_password_register"
+        app:layout_constraintBottom_toTopOf="@+id/text_input_layout_password_register"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_name" />
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_name">
 
-    <EditText
-        android:id="@+id/edit_text_password_register"
-        style="@style/Widget.TaskHero.EditText"
-        android:autofillHints="password"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_email_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="emailAddress"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_password_register"
+        style="@style/Widget.TaskHero.TextInputLayout"
         android:hint="@string/common_label_password"
-        android:inputType="textPassword"
+        app:endIconMode="password_toggle"
         app:layout_constraintBottom_toTopOf="@+id/button_register"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_email_register" />
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_email_register">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_password_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="password"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/button_register"
@@ -90,6 +109,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_password_register" />
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_password_register" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

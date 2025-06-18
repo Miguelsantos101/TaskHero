@@ -109,9 +109,12 @@ public class EditProfileFragment extends BasePhotoFragment {
     }
 
     private boolean validateEmail() {
-        String newEmail = Objects.requireNonNull(binding.editTextEmailEdit.getText()).toString().trim();
-        if (newEmail.isEmpty()) {
+        String email = Objects.requireNonNull(binding.editTextEmailEdit.getText()).toString().trim();
+        if (email.isEmpty()) {
             binding.textInputLayoutEmailEdit.setError(getString(R.string.edit_profile_error_email_required));
+            return false;
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.textInputLayoutEmailEdit.setError(getString(R.string.edit_profile_error_invalid_email));
             return false;
         } else {
             binding.textInputLayoutEmailEdit.setError(null);

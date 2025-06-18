@@ -26,33 +26,47 @@
         android:text="@string/login_screen_title"
         android:textSize="28sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/edit_text_email_login"
+        app:layout_constraintBottom_toTopOf="@+id/text_input_layout_email_login"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <EditText
-        android:id="@+id/edit_text_email_login"
-        style="@style/Widget.TaskHero.EditText"
-        android:autofillHints="emailAddress"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_email_login"
+        style="@style/Widget.TaskHero.TextInputLayout"
         android:hint="@string/common_label_email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/edit_text_password_login"
+        app:layout_constraintBottom_toTopOf="@+id/text_input_layout_password_login"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/text_view_title_login" />
+        app:layout_constraintTop_toBottomOf="@id/text_view_title_login">
 
-    <EditText
-        android:id="@+id/edit_text_password_login"
-        style="@style/Widget.TaskHero.EditText"
-        android:autofillHints="password"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_email_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="emailAddress"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_password_login"
+        style="@style/Widget.TaskHero.TextInputLayout"
         android:hint="@string/common_label_password"
-        android:inputType="textPassword"
+        app:endIconMode="password_toggle"
         app:layout_constraintBottom_toTopOf="@+id/button_login"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_email_login" />
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_email_login">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_password_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="password"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/button_login"
@@ -62,7 +76,7 @@
         app:layout_constraintBottom_toTopOf="@+id/text_view_go_to_register"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_password_login" />
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_password_login" />
 
     <TextView
         android:id="@+id/text_view_go_to_register"

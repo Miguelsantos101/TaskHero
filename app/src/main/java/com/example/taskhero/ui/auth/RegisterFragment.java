@@ -2,7 +2,6 @@ package com.example.taskhero.ui.auth;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +17,8 @@ import com.example.taskhero.ui.base.BasePhotoFragment;
 import com.example.taskhero.util.HashUtils;
 import com.example.taskhero.util.UIUtils;
 import com.example.taskhero.viewmodel.AuthViewModel;
+
+import java.util.Objects;
 
 public class RegisterFragment extends BasePhotoFragment {
 
@@ -65,25 +66,75 @@ public class RegisterFragment extends BasePhotoFragment {
         });
     }
 
-    private void registerUser() {
-        String name = binding.editTextName.getText().toString().trim();
-        String email = binding.editTextEmailRegister.getText().toString().trim();
-        String password = binding.editTextPasswordRegister.getText().toString().trim();
+    private boolean isFormValid() {
+        boolean nameIsValid = validateName();
+        boolean emailIsValid = validateEmail();
+        boolean passwordIsValid = validatePassword();
+        return nameIsValid & emailIsValid & passwordIsValid;
+    }
 
-        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || selectedImageUri == null) {
+    private boolean validateName() {
+        String name = Objects.requireNonNull(binding.editTextName.getText()).toString().trim();
+        if (name.isEmpty()) {
+            binding.textInputLayoutName.setError(getString(R.string.register_error_name_required));
+            return false;
+        } else {
+            binding.textInputLayoutName.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateEmail() {
+        String email = Objects.requireNonNull(binding.editTextEmailRegister.getText()).toString().trim();
+        if (email.isEmpty()) {
+            binding.textInputLayoutEmailRegister.setError(getString(R.string.register_error_email_required));
+            return false;
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.textInputLayoutEmailRegister.setError(getString(R.string.register_error_invalid_email));
+            return false;
+        } else {
+            binding.textInputLayoutEmailRegister.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validatePassword() {
+        String password = Objects.requireNonNull(binding.editTextPasswordRegister.getText()).toString().trim();
+        if (password.isEmpty()) {
+            binding.textInputLayoutPasswordRegister.setError(getString(R.string.register_error_password_required));
+            return false;
+        } else if (password.length() < 3) {
+            binding.textInputLayoutPasswordRegister.setError(getString(R.string.register_error_password_too_short));
+            return false;
+        } else {
+            binding.textInputLayoutPasswordRegister.setError(null);
+            return true;
+        }
+    }
+
+
+    private void registerUser() {
+        if (!isFormValid()) {
             UIUtils.showErrorSnackbar(requireView(), getString(R.string.register_error_all_fields_required));
             return;
         }
 
-        String passwordHash = HashUtils.sha256(password);
+        if (selectedImageUri == null) {
+            UIUtils.showErrorSnackbar(requireView(), getString(R.string.register_error_all_fields_required));
+            return;
+        }
+
+        String name = Objects.requireNonNull(binding.editTextName.getText()).toString().trim();
+        String email = Objects.requireNonNull(binding.editTextEmailRegister.getText()).toString().trim();
+        String password = Objects.requireNonNull(binding.editTextPasswordRegister.getText()).toString().trim();
 
         Uri internalImageUri = saveImageToInternalStorage(selectedImageUri);
-
         if (internalImageUri == null) {
             UIUtils.showErrorSnackbar(requireView(), getString(R.string.photo_error_saving_image));
             return;
         }
 
+        String passwordHash = HashUtils.sha256(password);
         User user = new User(name, email, passwordHash, internalImageUri.toString());
         authViewModel.registerUser(user);
     }

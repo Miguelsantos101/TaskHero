@@ -27,8 +27,13 @@
     <!-- Registration Screen -->
     <string name="register_screen_title">Create Account</string>
     <string name="register_button_text">Sign Up</string>
-    <string name="register_error_all_fields_required">All fields and the photo are required</string>
+    <string name="register_error_name_required">Name cannot be empty</string>
+    <string name="register_error_email_required">Email cannot be empty</string>
+    <string name="register_error_password_required">Password cannot be empty</string>
+    <string name="register_error_all_fields_required">All fields are required</string>
     <string name="register_snackbar_error">Registration error. The email may already be in use</string>
+    <string name="register_error_invalid_email">Please enter a valid email address</string>
+    <string name="register_error_password_too_short">Password must be at least 3 characters long</string>
     <string name="register_snackbar_success">Registration successful!</string>
 
     <!-- Photo Selection -->
@@ -80,6 +85,7 @@
     <string name="edit_profile_error_name_required">Name cannot be empty</string>
     <string name="edit_profile_error_email_required">Email cannot be empty</string>
     <string name="edit_profile_snackbar_error_email_exists">Email already in use</string>
+    <string name="edit_profile_error_invalid_email">Please enter a valid email address</string>
     <string name="edit_profile_snackbar_error_verifying_email">Error verifying email</string>
     <string name="edit_profile_snackbar_success">Profile updated!</string>
     <string name="edit_profile_error_saving_image">Error saving new image</string>

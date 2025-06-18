@@ -27,8 +27,13 @@
     <!-- Tela de Registro -->
     <string name="register_screen_title">Criar Conta</string>
     <string name="register_button_text">Cadastrar</string>
+    <string name="register_error_name_required">Nome não pode estar vazio</string>
+    <string name="register_error_email_required">E-mail não pode estar vazio</string>
+    <string name="register_error_password_required">Senha não pode estar vazia</string>
     <string name="register_error_all_fields_required">Todos os campos e a foto são obrigatórios</string>
     <string name="register_snackbar_error">Erro no cadastro. O e-mail pode já estar em uso</string>
+    <string name="register_error_invalid_email">Por favor, insira um e-mail válido</string>
+    <string name="register_error_password_too_short">A senha deve ter pelo menos 3 caracteres</string>
     <string name="register_snackbar_success">Cadastro realizado com sucesso!</string>
 
     <!-- Seleção de Foto -->
@@ -80,6 +85,7 @@
     <string name="edit_profile_error_name_required">O nome não pode estar vazio</string>
     <string name="edit_profile_error_email_required">O e-mail não pode estar vazio</string>
     <string name="edit_profile_snackbar_error_email_exists">E-mail já está em uso</string>
+    <string name="edit_profile_error_invalid_email">Por favor, insira um e-mail válido</string>
     <string name="edit_profile_snackbar_error_verifying_email">Erro ao verificar o e-mail</string>
     <string name="edit_profile_snackbar_success">Perfil Atualizado!</string>
     <string name="edit_profile_error_saving_image">Erro ao salvar nova imagem</string>
