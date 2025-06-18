@@ -52,17 +52,22 @@ public class LoginFragment extends Fragment {
     }
 
     private void observeViewModel() {
-        authViewModel.getLoginResult().observe(getViewLifecycleOwner(), user -> {
+        authViewModel.getLoginSuccessEvent().observe(getViewLifecycleOwner(), user -> {
             if (user != null) {
                 UIUtils.showSuccessSnackbar(requireView(), getString(R.string.login_success_message));
-
                 saveUserSession(user.getId());
 
                 if (getActivity() instanceof LoginActivity) {
                     ((LoginActivity) getActivity()).navigateToMain();
                 }
-            } else {
-                UIUtils.showErrorSnackbar(requireView(), getString(R.string.login_error_invalid_credentials));
+                authViewModel.onLoginHandled();
+            }
+        });
+
+        authViewModel.getLoginErrorEvent().observe(getViewLifecycleOwner(), errorMessage -> {
+            if (errorMessage != null) {
+                UIUtils.showErrorSnackbar(requireView(), errorMessage);
+                authViewModel.onLoginHandled();
             }
         });
     }

@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.taskhero.R;
 import com.example.taskhero.data.model.User;
 import com.example.taskhero.data.repository.TaskRepository;
 
@@ -17,7 +18,8 @@ import java.util.concurrent.Future;
 public class AuthViewModel extends AndroidViewModel {
 
     private final TaskRepository repository;
-    private final MutableLiveData<User> loginResult = new MutableLiveData<>();
+    private final MutableLiveData<User> loginSuccessEvent = new MutableLiveData<>();
+    private final MutableLiveData<String> loginErrorEvent = new MutableLiveData<>();
     private final MutableLiveData<Boolean> registrationResult = new MutableLiveData<>();
     private static final String TAG = "AuthViewModel";
 
@@ -26,8 +28,12 @@ public class AuthViewModel extends AndroidViewModel {
         repository = new TaskRepository(application);
     }
 
-    public LiveData<User> getLoginResult() {
-        return loginResult;
+    public LiveData<User> getLoginSuccessEvent() {
+        return loginSuccessEvent;
+    }
+
+    public LiveData<String> getLoginErrorEvent() {
+        return loginErrorEvent;
     }
 
     public LiveData<Boolean> getRegistrationResult() {
@@ -35,14 +41,25 @@ public class AuthViewModel extends AndroidViewModel {
     }
 
     public void loginUser(String email, String passwordHash) {
-        try {
-            Future<User> future = repository.findByCredentials(email, passwordHash);
-            User user = future.get();
-            loginResult.postValue(user);
-        } catch (ExecutionException | InterruptedException e) {
-            Log.e(TAG, "Error while trying to log in user", e);
-            loginResult.postValue(null);
-        }
+        new Thread(() -> {
+            try {
+                Future<User> future = repository.findByCredentials(email, passwordHash);
+                User user = future.get();
+                if (user != null) {
+                    loginSuccessEvent.postValue(user);
+                } else {
+                    loginErrorEvent.postValue(getApplication().getString(R.string.login_error_invalid_credentials));
+                }
+            } catch (ExecutionException | InterruptedException e) {
+                Log.e(TAG, "Error while trying to log in user", e);
+                loginErrorEvent.postValue(getApplication().getString(R.string.login_error_generic));
+            }
+        }).start();
+    }
+
+    public void onLoginHandled() {
+        loginSuccessEvent.setValue(null);
+        loginErrorEvent.setValue(null);
     }
 
     public void registerUser(User user) {

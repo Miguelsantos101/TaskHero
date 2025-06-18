@@ -21,6 +21,7 @@
     <string name="login_navigation_to_register">Não tem uma conta? Cadastre-se</string>
     <string name="login_error_invalid_credentials">E-mail ou senha inválidos</string>
     <string name="login_error_all_fields_required">Por favor, preencha todos os campos</string>
+    <string name="login_error_generic">Um erro inesperado ocorreu. Por favor, tente novamente</string>
     <string name="login_success_message">Login realizado com sucesso!</string>
 
     <!-- Tela de Registro -->

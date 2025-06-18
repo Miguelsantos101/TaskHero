@@ -21,6 +21,7 @@
     <string name="login_navigation_to_register">Don\'t have an account? Sign Up</string>
     <string name="login_error_invalid_credentials">Invalid email or password</string>
     <string name="login_error_all_fields_required">Please fill in all fields</string>
+    <string name="login_error_generic">An unexpected error occurred. Please try again</string>
     <string name="login_success_message">Login successful!</string>
 
     <!-- Registration Screen -->
