@@ -1,4 +1,4 @@
-package com.example.taskhero.viewmodel;
+package com.example.taskhero.ui.tasks;
 
 import android.app.Application;
 import android.util.Log;

@@ -1,4 +1,4 @@
-package com.example.taskhero.ui.main;
+package com.example.taskhero.ui.tasks;
 
 import android.content.Context;
 import android.graphics.Paint;

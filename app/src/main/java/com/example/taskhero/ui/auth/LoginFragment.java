@@ -18,7 +18,6 @@ import com.example.taskhero.databinding.FragmentLoginBinding;
 import com.example.taskhero.util.Constants;
 import com.example.taskhero.util.HashUtils;
 import com.example.taskhero.util.UIUtils;
-import com.example.taskhero.viewmodel.AuthViewModel;
 
 import java.util.Objects;
 

@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 
 import com.example.taskhero.R;
 import com.example.taskhero.data.model.Task;
-import com.example.taskhero.services.TaskAlarmReceiver;
+import com.example.taskhero.receivers.TaskAlarmReceiver;
 
 import java.util.Date;
 

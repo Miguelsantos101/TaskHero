@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.taskhero.R;
 import com.example.taskhero.databinding.ActivityLoginBinding;
-import com.example.taskhero.ui.main.MainActivity;
+import com.example.taskhero.ui.tasks.MainActivity;
 import com.example.taskhero.util.Constants;
 import com.example.taskhero.util.NotificationScheduler;
 

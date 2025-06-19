@@ -1,4 +1,4 @@
-package com.example.taskhero.ui.main;
+package com.example.taskhero.ui.tasks;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,7 +16,6 @@ import com.example.taskhero.databinding.FragmentEditTaskBinding;
 import com.example.taskhero.ui.base.BaseTaskFormFragment;
 import com.example.taskhero.util.NotificationScheduler;
 import com.example.taskhero.util.UIUtils;
-import com.example.taskhero.viewmodel.TaskViewModel;
 
 import java.util.Objects;
 

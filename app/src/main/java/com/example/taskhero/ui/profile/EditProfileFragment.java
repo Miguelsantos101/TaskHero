@@ -1,4 +1,4 @@
-package com.example.taskhero.ui.main;
+package com.example.taskhero.ui.profile;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,7 +16,6 @@ import com.example.taskhero.data.model.User;
 import com.example.taskhero.databinding.FragmentEditProfileBinding;
 import com.example.taskhero.ui.base.BasePhotoFragment;
 import com.example.taskhero.util.UIUtils;
-import com.example.taskhero.viewmodel.ProfileViewModel;
 
 import java.util.Objects;
 

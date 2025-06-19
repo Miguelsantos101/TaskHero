@@ -1,4 +1,4 @@
-package com.example.taskhero.ui.main;
+package com.example.taskhero.ui.tasks;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.taskhero.R;
 import com.example.taskhero.databinding.ActivityMainBinding;
+import com.example.taskhero.ui.profile.ProfileFragment;
 import com.example.taskhero.util.UIUtils;
 
 public class MainActivity extends AppCompatActivity {

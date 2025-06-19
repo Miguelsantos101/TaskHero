@@ -1,4 +1,4 @@
-package com.example.taskhero.ui.main;
+package com.example.taskhero.ui.tasks;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,7 +18,6 @@ import com.example.taskhero.databinding.FragmentAddTaskBinding;
 import com.example.taskhero.ui.base.BaseTaskFormFragment;
 import com.example.taskhero.util.NotificationScheduler;
 import com.example.taskhero.util.UIUtils;
-import com.example.taskhero.viewmodel.TaskViewModel;
 
 import java.util.Objects;
 

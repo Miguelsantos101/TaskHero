@@ -30,7 +30,7 @@
         </provider>
 
         <receiver
-            android:name=".services.TaskAlarmReceiver"
+            android:name=".receivers.TaskAlarmReceiver"
             android:enabled="true" />
 
         <activity
@@ -43,7 +43,7 @@
         </activity>
 
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.tasks.MainActivity"
             android:exported="false" />
     </application>
 

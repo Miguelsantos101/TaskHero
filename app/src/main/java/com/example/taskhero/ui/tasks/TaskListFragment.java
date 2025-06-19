@@ -1,4 +1,4 @@
-package com.example.taskhero.ui.main;
+package com.example.taskhero.ui.tasks;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,7 +23,6 @@ import com.example.taskhero.data.model.User;
 import com.example.taskhero.databinding.FragmentTaskListBinding;
 import com.example.taskhero.util.NotificationScheduler;
 import com.example.taskhero.util.UIUtils;
-import com.example.taskhero.viewmodel.TaskViewModel;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInteractionListener {

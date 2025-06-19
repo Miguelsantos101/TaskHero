@@ -16,7 +16,6 @@ import com.example.taskhero.databinding.FragmentRegisterBinding;
 import com.example.taskhero.ui.base.BasePhotoFragment;
 import com.example.taskhero.util.HashUtils;
 import com.example.taskhero.util.UIUtils;
-import com.example.taskhero.viewmodel.AuthViewModel;
 
 import java.util.Objects;
 

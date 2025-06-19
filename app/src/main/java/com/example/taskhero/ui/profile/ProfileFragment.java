@@ -1,4 +1,4 @@
-package com.example.taskhero.ui.main;
+package com.example.taskhero.ui.profile;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.taskhero.R;
 import com.example.taskhero.databinding.FragmentProfileBinding;
 import com.example.taskhero.ui.auth.LoginActivity;
-import com.example.taskhero.viewmodel.ProfileViewModel;
+import com.example.taskhero.ui.tasks.MainActivity;
 
 public class ProfileFragment extends Fragment {
 

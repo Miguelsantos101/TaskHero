@@ -1,4 +1,4 @@
-package com.example.taskhero.services;
+package com.example.taskhero.receivers;
 
 import android.Manifest;
 import android.app.Notification;
