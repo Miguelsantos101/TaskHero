@@ -48,19 +48,23 @@ public class RegisterFragment extends BasePhotoFragment {
     }
 
     private void observeViewModel() {
-        authViewModel.getRegistrationResult().observe(getViewLifecycleOwner(), success -> {
-            if (success != null) {
-                if (success) {
-                    binding.editTextName.setText("");
-                    binding.editTextEmailRegister.setText("");
-                    binding.editTextPasswordRegister.setText("");
-                    binding.imageViewProfile.setImageResource(R.drawable.ic_add_a_photo);
+        authViewModel.getRegistrationSuccessEvent().observe(getViewLifecycleOwner(), success -> {
+            if (success != null && success) {
+                binding.editTextName.setText("");
+                binding.editTextEmailRegister.setText("");
+                binding.editTextPasswordRegister.setText("");
+                binding.imageViewProfile.setImageResource(R.drawable.ic_add_a_photo);
 
-                    UIUtils.showSuccessSnackbar(requireView(), getString(R.string.register_snackbar_success));
-                    requireActivity().getSupportFragmentManager().popBackStack();
-                } else {
-                    UIUtils.showErrorSnackbar(requireView(), getString(R.string.register_snackbar_error));
-                }
+                UIUtils.showSuccessSnackbar(requireView(), getString(R.string.register_snackbar_success));
+                requireActivity().getSupportFragmentManager().popBackStack();
+
+                authViewModel.onRegistrationHandled();
+            }
+        });
+
+        authViewModel.getRegistrationErrorEvent().observe(getViewLifecycleOwner(), errorMessage -> {
+            if (errorMessage != null) {
+                UIUtils.showErrorSnackbar(requireView(), errorMessage);
                 authViewModel.onRegistrationHandled();
             }
         });

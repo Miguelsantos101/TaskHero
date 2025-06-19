@@ -20,7 +20,9 @@ public class AuthViewModel extends AndroidViewModel {
     private final UserRepository repository;
     private final MutableLiveData<User> loginSuccessEvent = new MutableLiveData<>();
     private final MutableLiveData<String> loginErrorEvent = new MutableLiveData<>();
-    private final MutableLiveData<Boolean> registrationResult = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> registrationSuccessEvent = new MutableLiveData<>();
+    private final MutableLiveData<String> registrationErrorEvent = new MutableLiveData<>();
+
     private static final String TAG = "AuthViewModel";
 
     public AuthViewModel(@NonNull Application application) {
@@ -36,8 +38,12 @@ public class AuthViewModel extends AndroidViewModel {
         return loginErrorEvent;
     }
 
-    public LiveData<Boolean> getRegistrationResult() {
-        return registrationResult;
+    public LiveData<Boolean> getRegistrationSuccessEvent() {
+        return registrationSuccessEvent;
+    }
+
+    public LiveData<String> getRegistrationErrorEvent() {
+        return registrationErrorEvent;
     }
 
     public void loginUser(String email, String passwordHash) {
@@ -63,23 +69,26 @@ public class AuthViewModel extends AndroidViewModel {
     }
 
     public void registerUser(User user) {
-        try {
-            Future<User> future = repository.findByEmail(user.getEmail());
-            User existingUser = future.get();
+        new Thread(() -> {
+            try {
+                Future<User> future = repository.findByEmail(user.getEmail());
+                User existingUser = future.get();
 
-            if (existingUser == null) {
-                repository.registerUser(user);
-                registrationResult.postValue(true);
-            } else {
-                registrationResult.postValue(false);
+                if (existingUser == null) {
+                    repository.registerUser(user);
+                    registrationSuccessEvent.postValue(true);
+                } else {
+                    registrationErrorEvent.postValue(getApplication().getString(R.string.register_error_email_exists));
+                }
+            } catch (ExecutionException | InterruptedException e) {
+                Log.e(TAG, "Error during registration check", e);
+                registrationErrorEvent.postValue(getApplication().getString(R.string.register_error_generic));
             }
-        } catch (ExecutionException | InterruptedException e) {
-            Log.e(TAG, "Error during registration check", e);
-            registrationResult.postValue(false);
-        }
+        }).start();
     }
 
     public void onRegistrationHandled() {
-        registrationResult.setValue(null);
+        registrationSuccessEvent.setValue(null);
+        registrationErrorEvent.setValue(null);
     }
 }

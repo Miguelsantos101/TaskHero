@@ -31,7 +31,8 @@
     <string name="register_error_email_required">E-mail não pode estar vazio</string>
     <string name="register_error_password_required">Senha não pode estar vazia</string>
     <string name="register_error_all_fields_required">Todos os campos e a foto são obrigatórios</string>
-    <string name="register_snackbar_error">Erro no cadastro. O e-mail pode já estar em uso</string>
+    <string name="register_error_email_exists">Este e-mail já está em uso</string>
+    <string name="register_error_generic">Ocorreu um erro inesperado. Tente novamente</string>
     <string name="register_error_invalid_email">Por favor, insira um e-mail válido</string>
     <string name="register_error_password_too_short">A senha deve ter pelo menos 3 caracteres</string>
     <string name="register_snackbar_success">Cadastro realizado com sucesso!</string>
