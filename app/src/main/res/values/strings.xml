@@ -97,4 +97,7 @@
     <string name="notification_title">Task Deadline!</string>
     <string name="notification_text">Your task %1$s is due</string>
     <string name="notification_error_no_permission">Without permission, task reminders will not work</string>
+
+    <!-- Testing -->
+    <string name="testing_notification_allow_button">Allow</string>
 </resources>

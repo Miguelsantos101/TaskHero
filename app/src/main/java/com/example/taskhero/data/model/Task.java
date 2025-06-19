@@ -3,6 +3,7 @@ package com.example.taskhero.data.model;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 
@@ -27,6 +28,7 @@ public class Task {
     @ColumnInfo(name = "is_completed")
     public boolean isCompleted;
 
+    @Ignore
     public Task() {
     }
 

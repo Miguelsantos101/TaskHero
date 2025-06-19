@@ -96,7 +96,7 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
     }
 
     @Override
-    public void onTaskCompleted(Task task, boolean isCompleted, int position) {
+    public void onTaskCompleted(Task task, boolean isCompleted) {
         task.setCompleted(isCompleted);
         taskViewModel.updateTask(task);
 

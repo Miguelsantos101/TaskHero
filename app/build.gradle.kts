@@ -30,6 +30,7 @@ android {
     }
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
 }
@@ -43,6 +44,7 @@ dependencies {
 
     implementation(libs.room.common.jvm)
     implementation(libs.room.runtime.android)
+    implementation(libs.uiautomator)
     annotationProcessor(libs.room.compiler)
 
     implementation(libs.glide)
@@ -50,4 +52,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation(libs.espresso.intents)
 }

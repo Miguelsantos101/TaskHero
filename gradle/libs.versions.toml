@@ -11,6 +11,8 @@ constraintlayout = "2.2.1"
 roomCommonJvm = "2.7.2"
 roomRuntimeAndroid = "2.7.2"
 roomCompiler = "2.7.2"
+espressoIntents = "3.6.1"
+uiautomator = "2.3.0"
 
 [libraries]
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
@@ -24,6 +26,8 @@ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayo
 room-common-jvm = { group = "androidx.room", name = "room-common-jvm", version.ref = "roomCommonJvm" }
 room-runtime-android = { group = "androidx.room", name = "room-runtime-android", version.ref = "roomRuntimeAndroid" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
+espresso-intents = { group = "androidx.test.espresso", name = "espresso-intents", version.ref = "espressoIntents" }
+uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

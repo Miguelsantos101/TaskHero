@@ -97,4 +97,7 @@
     <string name="notification_title">Prazo da Tarefa!</string>
     <string name="notification_text">Sua tarefa %1$s está vencendo</string>
     <string name="notification_error_no_permission">Sem permissão, os lembretes de tarefa não funcionarão</string>
+
+    <!-- Testes -->
+    <string name="testing_notification_allow_button">Permitir</string>
 </resources>
