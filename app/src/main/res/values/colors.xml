@@ -12,4 +12,5 @@
     <color name="status_success">#388E3C</color>
     <color name="status_error">#D32F2F</color>
     <color name="status_neutral">#808080</color>
+    <color name="green_ripple">#40388E3C</color>
 </resources>
