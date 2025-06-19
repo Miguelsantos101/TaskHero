@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
@@ -63,6 +64,16 @@ public class TaskAdapter extends ListAdapter<Task, TaskAdapter.TaskViewHolder> {
             binding.textViewTaskTitle.setText(task.getTitle());
             binding.checkboxTaskCompleted.setChecked(task.isCompleted());
 
+            Context context = itemView.getContext();
+
+            if (!task.isCompleted() && task.getDueDate() > 0 && task.getDueDate() < System.currentTimeMillis()) {
+                binding.textViewTaskTitle.setTextColor(ContextCompat.getColor(context, R.color.status_error));
+                binding.textViewDueDate.setTextColor(ContextCompat.getColor(context, R.color.status_error));
+            } else {
+                binding.textViewTaskTitle.setTextColor(ContextCompat.getColor(context, R.color.text_primary_light));
+                binding.textViewDueDate.setTextColor(ContextCompat.getColor(context, android.R.color.darker_gray));
+            }
+
             itemView.setOnClickListener(v -> listener.onTaskClicked(task));
 
             if (task.isCompleted()) {
@@ -72,8 +83,6 @@ public class TaskAdapter extends ListAdapter<Task, TaskAdapter.TaskViewHolder> {
             }
 
             if (task.getDueDate() > 0) {
-                Context context = itemView.getContext();
-
                 Date date = new Date(task.getDueDate());
 
                 String dateString = android.text.format.DateFormat.getMediumDateFormat(context).format(date);
@@ -89,7 +98,7 @@ public class TaskAdapter extends ListAdapter<Task, TaskAdapter.TaskViewHolder> {
 
             binding.checkboxTaskCompleted.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (buttonView.isPressed()) {
-                    listener.onTaskCompleted(task, isChecked,getAdapterPosition());
+                    listener.onTaskCompleted(task, isChecked, getAdapterPosition());
                 }
             });
 
@@ -99,7 +108,9 @@ public class TaskAdapter extends ListAdapter<Task, TaskAdapter.TaskViewHolder> {
 
     public interface OnTaskInteractionListener {
         void onTaskCompleted(Task task, boolean isCompleted, int position);
+
         void onTaskDeleted(Task task);
+
         void onTaskClicked(Task task);
     }
 }
