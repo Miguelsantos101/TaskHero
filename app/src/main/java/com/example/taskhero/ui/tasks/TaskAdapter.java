@@ -107,7 +107,7 @@ public class TaskAdapter extends ListAdapter<Task, TaskAdapter.TaskViewHolder> {
 
             binding.checkboxTaskCompleted.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (buttonView.isPressed()) {
-                    listener.onTaskCompleted(task, isChecked);
+                    listener.onTaskCompleted(task, isChecked, getAdapterPosition());
                 }
             });
 
@@ -116,7 +116,7 @@ public class TaskAdapter extends ListAdapter<Task, TaskAdapter.TaskViewHolder> {
     }
 
     public interface OnTaskInteractionListener {
-        void onTaskCompleted(Task task, boolean isCompleted);
+        void onTaskCompleted(Task task, boolean isCompleted, int position);
 
         void onTaskDeleted(Task task);
 

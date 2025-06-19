@@ -96,7 +96,7 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
     }
 
     @Override
-    public void onTaskCompleted(Task task, boolean isCompleted) {
+    public void onTaskCompleted(Task task, boolean isCompleted, int position) {
         task.setCompleted(isCompleted);
         taskViewModel.updateTask(task);
 
@@ -120,6 +120,8 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
                 NotificationScheduler.scheduleTaskReminder(requireContext(), task);
             }
         }
+
+        adapter.notifyItemChanged(position);
     }
 
     @Override
