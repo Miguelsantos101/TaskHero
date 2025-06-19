@@ -66,11 +66,20 @@ public class TaskAdapter extends ListAdapter<Task, TaskAdapter.TaskViewHolder> {
 
             Context context = itemView.getContext();
 
+            int nightModeFlags = context.getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
+
             if (!task.isCompleted() && task.getDueDate() > 0 && task.getDueDate() < System.currentTimeMillis()) {
-                binding.textViewTaskTitle.setTextColor(ContextCompat.getColor(context, R.color.status_error));
-                binding.textViewDueDate.setTextColor(ContextCompat.getColor(context, R.color.status_error));
+                int errorColor = ContextCompat.getColor(context, R.color.status_error);
+                binding.textViewTaskTitle.setTextColor(errorColor);
+                binding.textViewDueDate.setTextColor(errorColor);
             } else {
-                binding.textViewTaskTitle.setTextColor(ContextCompat.getColor(context, R.color.text_primary_light));
+                int defaultTextColor;
+                if (nightModeFlags == android.content.res.Configuration.UI_MODE_NIGHT_YES) {
+                    defaultTextColor = ContextCompat.getColor(context, R.color.text_primary_dark);
+                } else {
+                    defaultTextColor = ContextCompat.getColor(context, R.color.text_primary_light);
+                }
+                binding.textViewTaskTitle.setTextColor(defaultTextColor);
                 binding.textViewDueDate.setTextColor(ContextCompat.getColor(context, android.R.color.darker_gray));
             }
 
