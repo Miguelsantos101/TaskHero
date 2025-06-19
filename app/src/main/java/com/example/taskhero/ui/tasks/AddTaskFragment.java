@@ -19,6 +19,8 @@ import com.example.taskhero.ui.base.BaseTaskFormFragment;
 import com.example.taskhero.util.NotificationScheduler;
 import com.example.taskhero.util.UIUtils;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 public class AddTaskFragment extends BaseTaskFormFragment {
@@ -83,6 +85,13 @@ public class AddTaskFragment extends BaseTaskFormFragment {
             return;
         } else {
             binding.textInputLayoutTitle.setError(null);
+        }
+
+        boolean isDateSet = !binding.textViewSelectDate.getText().toString().equals(getString(R.string.task_form_label_due_date));
+
+        if (!isDateSet) {
+            calendar.setTime(new Date());
+            calendar.add(Calendar.MINUTE, 1);
         }
 
         SharedPreferences prefs = requireActivity().getSharedPreferences("TaskHeroPrefs", Context.MODE_PRIVATE);
