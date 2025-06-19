@@ -100,22 +100,26 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
         task.setCompleted(isCompleted);
         taskViewModel.updateTask(task);
 
-        if (isCompleted && currentUser != null) {
-            int pointsToAdd = 10;
-            int newScore = currentUser.getScore() + pointsToAdd;
-            currentUser.setScore(newScore);
-
-            taskViewModel.updateUser(currentUser);
+        if (isCompleted) {
 
             NotificationScheduler.cancelTaskReminder(requireContext(), task);
 
-            UIUtils.showSuccessSnackbar(requireView(), "+" + pointsToAdd + " " + getString(R.string.task_list_snackbar_points_gain));
+            if (currentUser != null) {
+                int pointsToAdd = 10;
+                currentUser.setScore(currentUser.getScore() + pointsToAdd);
+                taskViewModel.updateUser(currentUser);
+                UIUtils.showSuccessSnackbar(requireView(), "+" + pointsToAdd + " " + getString(R.string.task_list_snackbar_points_gain));
+            }
+
             if (soundPool != null) {
                 soundPool.play(taskCompleteSoundId, 1.0f, 1.0f, 1, 0, 1.0f);
             }
-        }
 
-        adapter.notifyItemChanged(position);
+        } else {
+            if (task.getDueDate() > System.currentTimeMillis()) {
+                NotificationScheduler.scheduleTaskReminder(requireContext(), task);
+            }
+        }
     }
 
     @Override
