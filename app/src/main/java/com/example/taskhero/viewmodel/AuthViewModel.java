@@ -10,14 +10,14 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.taskhero.R;
 import com.example.taskhero.data.model.User;
-import com.example.taskhero.data.repository.TaskRepository;
+import com.example.taskhero.data.repository.UserRepository;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class AuthViewModel extends AndroidViewModel {
 
-    private final TaskRepository repository;
+    private final UserRepository repository;
     private final MutableLiveData<User> loginSuccessEvent = new MutableLiveData<>();
     private final MutableLiveData<String> loginErrorEvent = new MutableLiveData<>();
     private final MutableLiveData<Boolean> registrationResult = new MutableLiveData<>();
@@ -25,7 +25,7 @@ public class AuthViewModel extends AndroidViewModel {
 
     public AuthViewModel(@NonNull Application application) {
         super(application);
-        repository = new TaskRepository(application);
+        repository = new UserRepository(application);
     }
 
     public LiveData<User> getLoginSuccessEvent() {

@@ -10,13 +10,13 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.taskhero.R;
 import com.example.taskhero.data.model.User;
-import com.example.taskhero.data.repository.TaskRepository;
+import com.example.taskhero.data.repository.UserRepository;
 
 import java.util.concurrent.Future;
 
 public class ProfileViewModel extends AndroidViewModel {
 
-    private final TaskRepository repository;
+    private final UserRepository userRepository;
     private final MutableLiveData<Boolean> updateSuccess = new MutableLiveData<>();
     private final MutableLiveData<String> updateError = new MutableLiveData<>();
     private static final String TAG = "ProfileViewModel";
@@ -24,11 +24,11 @@ public class ProfileViewModel extends AndroidViewModel {
 
     public ProfileViewModel(@NonNull Application application) {
         super(application);
-        repository = new TaskRepository(application);
+        userRepository = new UserRepository(application);
     }
 
     public LiveData<User> getUser(int userId) {
-        return repository.getUserById(userId);
+        return userRepository.getUserById(userId);
     }
 
     public LiveData<Boolean> getUpdateSuccess() {
@@ -47,12 +47,12 @@ public class ProfileViewModel extends AndroidViewModel {
 
         if (!userToUpdate.getEmail().equals(newEmail)) {
             try {
-                Future<User> future = repository.findByEmail(newEmail);
+                Future<User> future = userRepository.findByEmail(newEmail);
                 User existingUser = future.get();
 
                 if (existingUser == null) {
                     userToUpdate.setEmail(newEmail);
-                    repository.updateUser(userToUpdate);
+                    userRepository.updateUser(userToUpdate);
                     updateSuccess.postValue(true);
                 } else {
                     updateError.postValue(getApplication().getString(R.string.edit_profile_snackbar_error_email_exists));
@@ -62,7 +62,7 @@ public class ProfileViewModel extends AndroidViewModel {
                 updateError.postValue(getApplication().getString(R.string.edit_profile_snackbar_error_verifying_email));
             }
         } else {
-            repository.updateUser(userToUpdate);
+            userRepository.updateUser(userToUpdate);
             updateSuccess.postValue(true);
         }
     }
