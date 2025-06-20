@@ -27,6 +27,12 @@ public class User {
     @ColumnInfo(name = "score")
     public int score;
 
+    @ColumnInfo(name = "daily_streak", defaultValue = "0")
+    public int dailyStreak;
+
+    @ColumnInfo(name = "last_completion_date", defaultValue = "0")
+    public long lastCompletionDate;
+
     @Ignore
     public User() {
     }
@@ -37,6 +43,8 @@ public class User {
         this.passwordHash = passwordHash;
         this.photoUri = photoUri;
         this.score = 0;
+        this.dailyStreak = 0;
+        this.lastCompletionDate = 0;
     }
 
     public int getId() {
@@ -83,5 +91,23 @@ public class User {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    @SuppressWarnings("unused")
+    public int getDailyStreak() {
+        return dailyStreak;
+    }
+
+    @SuppressWarnings("unused")
+    public void setDailyStreak(int dailyStreak) {
+        this.dailyStreak = dailyStreak;
+    }
+
+    public long getLastCompletionDate() {
+        return lastCompletionDate;
+    }
+
+    public void setLastCompletionDate(long lastCompletionDate) {
+        this.lastCompletionDate = lastCompletionDate;
     }
 }

@@ -55,7 +55,16 @@
     <!-- Tela de Lista de Tarefas -->
     <string name="task_list_text_empty">Nenhuma tarefa ainda!</string>
     <string name="task_list_fab_content_desc">Adicionar nova tarefa</string>
-    <string name="task_list_snackbar_points_gain">pontos!</string>
+    <plurals name="task_list_snackbar_points_gain">
+        <item quantity="one">+%d ponto!</item>
+        <item quantity="many">+%d pontos!</item>
+        <item quantity="other">+%d pontos!</item>
+    </plurals>
+    <plurals name="task_list_snackbar_streak_bonus_message">
+        <item quantity="one">(Streak de %d dia!)</item>
+        <item quantity="many">(Streak de %d dias!)</item>
+        <item quantity="other">(Streak de %d dias!)</item>
+    </plurals>
     <string name="task_list_snackbar_task_deleted">Tarefa excluída!</string>
     <string name="task_list_item_delete_content_desc">Excluir tarefa</string>
     <string name="task_list_item_due_date_format">Vencimento: %1$s às %2$s</string>

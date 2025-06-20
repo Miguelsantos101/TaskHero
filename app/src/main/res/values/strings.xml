@@ -55,7 +55,16 @@
     <!-- Task List Screen -->
     <string name="task_list_text_empty">No tasks yet!</string>
     <string name="task_list_fab_content_desc">Add new task</string>
-    <string name="task_list_snackbar_points_gain">points!</string>
+    <plurals name="task_list_snackbar_points_gain">
+        <item quantity="one">+%d point!</item>
+        <item quantity="many">+%d points!</item>
+        <item quantity="other">+%d points!</item>
+    </plurals>
+    <plurals name="task_list_snackbar_streak_bonus_message">
+        <item quantity="one">(%d day streak!)</item>
+        <item quantity="many">(%d day streak!)</item>
+        <item quantity="other">(%d day streak!)</item>
+    </plurals>
     <string name="task_list_snackbar_task_deleted">Task deleted!</string>
     <string name="task_list_item_delete_content_desc">Delete task</string>
     <string name="task_list_item_due_date_format">Due: %1$s at %2$s</string>
