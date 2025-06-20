@@ -30,11 +30,13 @@ import androidx.test.uiautomator.UiObjectNotFoundException;
 import androidx.test.uiautomator.UiSelector;
 
 import com.example.taskhero.ui.auth.LoginActivity;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -47,8 +49,7 @@ public class AuthFlowTest {
     private static final String TAG = "AuthFlowTest";
 
     @Rule
-    public ActivityScenarioRule<LoginActivity> activityRule =
-            new ActivityScenarioRule<>(LoginActivity.class);
+    public ActivityScenarioRule<LoginActivity> activityRule = new ActivityScenarioRule<>(LoginActivity.class);
 
     @Before
     public void setUp() {
@@ -65,8 +66,8 @@ public class AuthFlowTest {
         onView(withId(R.id.text_view_go_to_register)).perform(click());
         onView(withId(R.id.button_register)).check(matches(isDisplayed()));
 
-        String uniqueEmail = "test" + System.currentTimeMillis() + "@example.com";
-        String password = "password123";
+        String uniqueEmail = "test@gmail.com";
+        String password = "123";
 
         File imageDir = InstrumentationRegistry.getInstrumentation().getTargetContext().getCacheDir();
         File tempFile = new File(imageDir, "test_image.jpg");
@@ -79,11 +80,7 @@ public class AuthFlowTest {
             e.printStackTrace();
         }
 
-        Uri imageUri = FileProvider.getUriForFile(
-                InstrumentationRegistry.getInstrumentation().getTargetContext(),
-                "com.example.taskhero.provider",
-                tempFile
-        );
+        Uri imageUri = FileProvider.getUriForFile(InstrumentationRegistry.getInstrumentation().getTargetContext(), "com.example.taskhero.provider", tempFile);
 
         Intent resultData = new Intent();
         resultData.setData(imageUri);
