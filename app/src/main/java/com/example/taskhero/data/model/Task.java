@@ -28,16 +28,20 @@ public class Task {
     @ColumnInfo(name = "is_completed")
     public boolean isCompleted;
 
+    @ColumnInfo(name = "difficulty")
+    public int difficulty;
+
     @Ignore
     public Task() {
     }
 
-    public Task(int userId, String title, String description, long dueDate) {
+    public Task(int userId, String title, String description, long dueDate, int difficulty) {
         this.userId = userId;
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.isCompleted = false;
+        this.difficulty = difficulty;
     }
 
     public int getId() {
@@ -84,5 +88,13 @@ public class Task {
 
     public void setCompleted(boolean completed) {
         isCompleted = completed;
+    }
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
     }
 }

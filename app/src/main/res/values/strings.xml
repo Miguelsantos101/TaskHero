@@ -70,6 +70,10 @@
     <string name="task_form_snackbar_add_success">Task saved!</string>
     <string name="task_form_snackbar_edit_success">Task updated!</string>
     <string name="task_form_snackbar_add_error">Error saving task</string>
+    <string name="task_form_difficulty_label">Difficulty</string>
+    <string name="task_form_difficulty_easy">Easy</string>
+    <string name="task_form_difficulty_medium">Medium</string>
+    <string name="task_form_difficulty_hard">Hard</string>
 
     <!-- Confirmation Task Deletion Dialog -->
     <string name="dialog_confirm_delete_title">Confirm Deletion</string>

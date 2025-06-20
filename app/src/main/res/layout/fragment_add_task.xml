@@ -29,7 +29,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="@dimen/touch_target_maximum_size"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout_title"
@@ -37,14 +38,15 @@
         android:hint="@string/common_label_title"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/text_view_add_task_title">
+        app:layout_constraintTop_toBottomOf="@id/text_view_add_task_title"
+        app:layout_constraintWidth_max="@dimen/touch_target_maximum_size">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_task_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords"
-            android:minHeight="@dimen/min_touch_target_size" />
+            android:minHeight="@dimen/touch_target_minimum_size" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +56,8 @@
         android:hint="@string/common_label_description"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/text_input_layout_title">
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_title"
+        app:layout_constraintWidth_max="@dimen/touch_target_maximum_size">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_task_description"
@@ -66,6 +69,49 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:id="@+id/text_view_difficulty_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/task_form_difficulty_label"
+        android:textColor="?attr/colorOnSurface"
+        app:layout_constraintStart_toStartOf="@id/text_input_layout_description"
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_description" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_difficulty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@id/text_input_layout_description"
+        app:layout_constraintStart_toStartOf="@id/text_input_layout_description"
+        app:layout_constraintTop_toBottomOf="@id/text_view_difficulty_label"
+        app:layout_constraintWidth_max="@dimen/touch_target_maximum_size">
+
+        <RadioButton
+            android:id="@+id/radio_button_easy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/task_form_difficulty_easy" />
+
+        <RadioButton
+            android:id="@+id/radio_button_medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="@string/task_form_difficulty_medium" />
+
+        <RadioButton
+            android:id="@+id/radio_button_hard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/task_form_difficulty_hard" />
+    </RadioGroup>
+
+    <TextView
         android:id="@+id/text_view_select_date"
         style="@style/Widget.TaskHero.TextView"
         android:background="?attr/editTextBackground"
@@ -75,7 +121,8 @@
         app:drawableEndCompat="@drawable/ic_calendar"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/text_input_layout_description" />
+        app:layout_constraintTop_toBottomOf="@id/radio_group_difficulty"
+        app:layout_constraintWidth_max="@dimen/touch_target_maximum_size" />
 
     <TextView
         android:id="@+id/text_view_select_time"
@@ -88,7 +135,8 @@
         app:drawableEndCompat="@drawable/ic_time"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/text_view_select_date" />
+        app:layout_constraintTop_toBottomOf="@id/text_view_select_date"
+        app:layout_constraintWidth_max="@dimen/touch_target_maximum_size" />
 
     <Button
         android:id="@+id/button_save_task"
@@ -97,6 +145,7 @@
         android:text="@string/task_form_button_save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_start" />
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintWidth_max="@dimen/button_touch_target_maximum_size" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

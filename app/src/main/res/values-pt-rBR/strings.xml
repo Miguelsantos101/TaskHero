@@ -70,6 +70,10 @@
     <string name="task_form_snackbar_add_success">Tarefa salva!</string>
     <string name="task_form_snackbar_edit_success">Tarefa atualizada!</string>
     <string name="task_form_snackbar_add_error">Erro ao salvar a tarefa</string>
+    <string name="task_form_difficulty_label">Dificuldade</string>
+    <string name="task_form_difficulty_easy">Fácil</string>
+    <string name="task_form_difficulty_medium">Médio</string>
+    <string name="task_form_difficulty_hard">Difícil</string>
 
     <!-- Diálogo de Confirmação de Exclusão -->
     <string name="dialog_confirm_delete_title">Confirmar Exclusão</string>

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -54,8 +56,20 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
 
         if (userId != -1) {
             taskViewModel.getTasksForUser(userId).observe(getViewLifecycleOwner(), tasks -> {
-                adapter.submitList(tasks);
+                if (tasks == null) return;
+
                 binding.textViewEmpty.setVisibility(tasks.isEmpty() ? View.VISIBLE : View.GONE);
+
+                if (adapter.getItemCount() == 0 && !tasks.isEmpty()) {
+                    final LayoutAnimationController controller =
+                            AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation);
+
+                    binding.recyclerViewTasks.setLayoutAnimation(controller);
+                    adapter.submitList(tasks);
+                    binding.recyclerViewTasks.scheduleLayoutAnimation();
+                } else {
+                    adapter.submitList(tasks);
+                }
             });
 
             taskViewModel.getUserById(userId).observe(getViewLifecycleOwner(), user -> this.currentUser = user);
@@ -69,8 +83,8 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
     }
 
     private void setupRecyclerView() {
-        adapter = new TaskAdapter(this);
         binding.recyclerViewTasks.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new TaskAdapter(this);
         binding.recyclerViewTasks.setAdapter(adapter);
     }
 
@@ -105,7 +119,19 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
             NotificationScheduler.cancelTaskReminder(requireContext(), task);
 
             if (currentUser != null) {
-                int pointsToAdd = 10;
+                int pointsToAdd;
+                switch (task.getDifficulty()) {
+                    case 0:
+                        pointsToAdd = 5;
+                        break;
+                    case 2:
+                        pointsToAdd = 20;
+                        break;
+                    default:
+                        pointsToAdd = 10;
+                        break;
+                }
+
                 currentUser.setScore(currentUser.getScore() + pointsToAdd);
                 taskViewModel.updateUser(currentUser);
                 UIUtils.showSuccessSnackbar(requireView(), "+" + pointsToAdd + " " + getString(R.string.task_list_snackbar_points_gain));

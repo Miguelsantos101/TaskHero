@@ -70,6 +70,18 @@ public class EditTaskFragment extends BaseTaskFormFragment {
             updateDateLabel();
             updateTimeLabel();
         }
+
+        switch (currentTask.getDifficulty()) {
+            case 0:
+                binding.radioGroupDifficulty.check(R.id.radio_button_easy);
+                break;
+            case 2:
+                binding.radioGroupDifficulty.check(R.id.radio_button_hard);
+                break;
+            default:
+                binding.radioGroupDifficulty.check(R.id.radio_button_medium);
+                break;
+        }
     }
 
     private void setupClickListeners() {
@@ -94,6 +106,11 @@ public class EditTaskFragment extends BaseTaskFormFragment {
             currentTask.setTitle(newTitle);
             currentTask.setDescription(newDescription);
             currentTask.setDueDate(calendar.getTimeInMillis());
+
+            int checkedRadioButtonId = binding.radioGroupDifficulty.getCheckedRadioButtonId();
+            int selectedDifficulty = (checkedRadioButtonId == R.id.radio_button_easy) ? 0 :
+                                     (checkedRadioButtonId == R.id.radio_button_hard) ? 2 : 1;
+            currentTask.setDifficulty(selectedDifficulty);
 
             NotificationScheduler.cancelTaskReminder(requireContext(), currentTask);
             NotificationScheduler.scheduleTaskReminder(requireContext(), currentTask);

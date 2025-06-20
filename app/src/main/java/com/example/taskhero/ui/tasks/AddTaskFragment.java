@@ -102,7 +102,11 @@ public class AddTaskFragment extends BaseTaskFormFragment {
             return;
         }
 
-        Task task = new Task(userId, title, description, calendar.getTimeInMillis());
+        int checkedRadioButtonId = binding.radioGroupDifficulty.getCheckedRadioButtonId();
+        int selectedDifficulty = (checkedRadioButtonId == R.id.radio_button_easy) ? 0 :
+                (checkedRadioButtonId == R.id.radio_button_hard) ? 2 : 1;
+
+        Task task = new Task(userId, title, description, calendar.getTimeInMillis(), selectedDifficulty);
         taskViewModel.insertTask(task);
     }
 
