@@ -22,16 +22,17 @@
 
     <TextView
         android:id="@+id/text_view_edit_profile_title"
-        android:layout_width="wrap_content"
+        style="@style/Widget.TaskHero.TextView"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="@string/edit_profile_screen_title"
         android:textColor="?attr/colorOnSurface"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="@dimen/touch_target_maximum_size"/>
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image_view_edit_profile"
@@ -64,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:minHeight="@dimen/min_touch_target_size" />
+            android:minHeight="@dimen/touch_target_minimum_size" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:minHeight="@dimen/min_touch_target_size" />
+            android:minHeight="@dimen/touch_target_minimum_size" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,6 +95,7 @@
         android:text="@string/common_action_save_changes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_start" />
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintWidth_max="@dimen/button_touch_target_maximum_size"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

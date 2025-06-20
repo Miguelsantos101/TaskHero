@@ -57,11 +57,17 @@ public class MainActivity extends AppCompatActivity {
     private boolean onNavigationItemSelected(MenuItem item) {
         int itemId = item.getItemId();
 
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.main_fragment_container);
+
         if (itemId == R.id.nav_tasks) {
-            loadFragment(new TaskListFragment(), false);
+            if (!(currentFragment instanceof TaskListFragment)) {
+                loadFragment(new TaskListFragment(), false);
+            }
             return true;
         } else if (itemId == R.id.nav_profile) {
-            loadFragment(new ProfileFragment(), false);
+            if (!(currentFragment instanceof ProfileFragment)) {
+                loadFragment(new ProfileFragment(), false);
+            }
             return true;
         }
 

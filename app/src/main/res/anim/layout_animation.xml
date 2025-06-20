@@ -2,5 +2,5 @@
 <layoutAnimation
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:animation="@anim/item_animation"
-    android:delay="15%"
+    android:delay="45%"
     android:animationOrder="normal" />

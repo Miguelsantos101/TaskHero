@@ -30,7 +30,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintWidth_max="@dimen/touch_target_maximum_size" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image_view_profile"
@@ -109,6 +110,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/text_input_layout_password_register" />
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_password_register"
+        app:layout_constraintWidth_max="@dimen/button_touch_target_maximum_size" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
