@@ -2,6 +2,8 @@ package com.example.taskhero.ui.tasks;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,7 +109,9 @@ public class TaskAdapter extends ListAdapter<Task, TaskAdapter.TaskViewHolder> {
 
             binding.checkboxTaskCompleted.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (buttonView.isPressed()) {
+                    buttonView.setEnabled(false);
                     listener.onTaskCompleted(task, isChecked, getAdapterPosition());
+                    new Handler(Looper.getMainLooper()).postDelayed(() -> buttonView.setEnabled(true), 1000);
                 }
             });
 
