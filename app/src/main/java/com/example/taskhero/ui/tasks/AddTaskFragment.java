@@ -77,30 +77,45 @@ public class AddTaskFragment extends BaseTaskFormFragment {
     }
 
     private void saveTask() {
+        if (!validateInput()) {
+            return;
+        }
+
+        int userId = validateUser();
+        if (userId == -1) return;
+
+        createAndPersistTask(userId);
+    }
+
+    private boolean validateInput() {
+        String title = Objects.requireNonNull(binding.editTextTaskTitle.getText()).toString().trim();
+        if (title.isEmpty()) {
+            binding.textInputLayoutTitle.setError(getString(R.string.task_form_error_title_required));
+            return false;
+        }
+        binding.textInputLayoutTitle.setError(null);
+        return true;
+    }
+
+    private int validateUser() {
+        int userId = getCurrentUserId();
+        if (userId == -1) {
+            UIUtils.showErrorSnackbar(requireView(), getString(R.string.common_error_user_not_found));
+            return -1;
+        }
+        return userId;
+    }
+
+    private int getCurrentUserId() {
+        SharedPreferences prefs = requireActivity().getSharedPreferences("TaskHeroPrefs", Context.MODE_PRIVATE);
+        return prefs.getInt("LOGGED_IN_USER_ID", -1);
+    }
+
+    private void createAndPersistTask(int userId) {
         String title = Objects.requireNonNull(binding.editTextTaskTitle.getText()).toString().trim();
         String description = Objects.requireNonNull(binding.editTextTaskDescription.getText()).toString().trim();
 
-        if (title.isEmpty()) {
-            binding.textInputLayoutTitle.setError(getString(R.string.task_form_error_title_required));
-            return;
-        } else {
-            binding.textInputLayoutTitle.setError(null);
-        }
-
-        boolean isDateSet = !binding.textViewSelectDate.getText().toString().equals(getString(R.string.task_form_label_due_date));
-
-        if (!isDateSet) {
-            calendar.setTime(new Date());
-            calendar.add(Calendar.MINUTE, 1);
-        }
-
-        SharedPreferences prefs = requireActivity().getSharedPreferences("TaskHeroPrefs", Context.MODE_PRIVATE);
-        int userId = prefs.getInt("LOGGED_IN_USER_ID", -1);
-
-        if (userId == -1) {
-            UIUtils.showErrorSnackbar(requireView(), getString(R.string.common_error_user_not_found));
-            return;
-        }
+        setDefaultDateIfNotSet();
 
         int checkedRadioButtonId = binding.radioGroupDifficulty.getCheckedRadioButtonId();
         int selectedDifficulty = (checkedRadioButtonId == R.id.radio_button_easy) ? 0 :
@@ -108,6 +123,14 @@ public class AddTaskFragment extends BaseTaskFormFragment {
 
         Task task = new Task(userId, title, description, calendar.getTimeInMillis(), selectedDifficulty);
         taskViewModel.insertTask(task);
+    }
+
+    private void setDefaultDateIfNotSet() {
+        boolean isDateSet = !binding.textViewSelectDate.getText().toString().equals(getString(R.string.task_form_label_due_date));
+        if (!isDateSet) {
+            calendar.setTime(new Date());
+            calendar.add(Calendar.MINUTE, 1);
+        }
     }
 
     @Override
