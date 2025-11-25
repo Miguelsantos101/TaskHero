@@ -16,6 +16,7 @@ import com.example.taskhero.databinding.FragmentRegisterBinding;
 import com.example.taskhero.ui.base.BasePhotoFragment;
 import com.example.taskhero.util.HashUtils;
 import com.example.taskhero.util.UIUtils;
+import com.example.taskhero.util.ValidationUtils;
 
 import java.util.Objects;
 
@@ -70,35 +71,21 @@ public class RegisterFragment extends BasePhotoFragment {
     }
 
     private boolean isFormValid() {
-        boolean nameIsValid = validateName();
-        boolean emailIsValid = validateEmail();
+        boolean nameIsValid = ValidationUtils.validateRequiredField(
+                binding.editTextName,
+                binding.textInputLayoutName,
+                getString(R.string.register_error_name_required)
+        );
+
+        boolean emailIsValid = ValidationUtils.validateEmail(
+                binding.editTextEmailRegister,
+                binding.textInputLayoutEmailRegister,
+                getString(R.string.register_error_email_required),
+                getString(R.string.register_error_invalid_email)
+        );
+
         boolean passwordIsValid = validatePassword();
         return nameIsValid & emailIsValid & passwordIsValid;
-    }
-
-    private boolean validateName() {
-        String name = Objects.requireNonNull(binding.editTextName.getText()).toString().trim();
-        if (name.isEmpty()) {
-            binding.textInputLayoutName.setError(getString(R.string.register_error_name_required));
-            return false;
-        } else {
-            binding.textInputLayoutName.setError(null);
-            return true;
-        }
-    }
-
-    private boolean validateEmail() {
-        String email = Objects.requireNonNull(binding.editTextEmailRegister.getText()).toString().trim();
-        if (email.isEmpty()) {
-            binding.textInputLayoutEmailRegister.setError(getString(R.string.register_error_email_required));
-            return false;
-        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.textInputLayoutEmailRegister.setError(getString(R.string.register_error_invalid_email));
-            return false;
-        } else {
-            binding.textInputLayoutEmailRegister.setError(null);
-            return true;
-        }
     }
 
     private boolean validatePassword() {

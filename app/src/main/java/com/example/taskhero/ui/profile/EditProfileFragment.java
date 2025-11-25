@@ -16,6 +16,7 @@ import com.example.taskhero.data.model.User;
 import com.example.taskhero.databinding.FragmentEditProfileBinding;
 import com.example.taskhero.ui.base.BasePhotoFragment;
 import com.example.taskhero.util.UIUtils;
+import com.example.taskhero.util.ValidationUtils;
 
 import java.util.Objects;
 
@@ -91,34 +92,20 @@ public class EditProfileFragment extends BasePhotoFragment {
     }
 
     private boolean isFormValid() {
-        boolean nameIsValid = validateName();
-        boolean emailIsValid = validateEmail();
+        boolean nameIsValid = ValidationUtils.validateRequiredField(
+                binding.editTextNameEdit,
+                binding.textInputLayoutNameEdit,
+                getString(R.string.edit_profile_error_name_required)
+        );
+
+        boolean emailIsValid = ValidationUtils.validateEmail(
+                binding.editTextEmailEdit,
+                binding.textInputLayoutEmailEdit,
+                getString(R.string.edit_profile_error_email_required),
+                getString(R.string.edit_profile_error_invalid_email)
+        );
+
         return nameIsValid & emailIsValid;
-    }
-
-    private boolean validateName() {
-        String newName = Objects.requireNonNull(binding.editTextNameEdit.getText()).toString().trim();
-        if (newName.isEmpty()) {
-            binding.textInputLayoutNameEdit.setError(getString(R.string.edit_profile_error_name_required));
-            return false;
-        } else {
-            binding.textInputLayoutNameEdit.setError(null);
-            return true;
-        }
-    }
-
-    private boolean validateEmail() {
-        String email = Objects.requireNonNull(binding.editTextEmailEdit.getText()).toString().trim();
-        if (email.isEmpty()) {
-            binding.textInputLayoutEmailEdit.setError(getString(R.string.edit_profile_error_email_required));
-            return false;
-        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.textInputLayoutEmailEdit.setError(getString(R.string.edit_profile_error_invalid_email));
-            return false;
-        } else {
-            binding.textInputLayoutEmailEdit.setError(null);
-            return true;
-        }
     }
 
     private void setupObservers() {
