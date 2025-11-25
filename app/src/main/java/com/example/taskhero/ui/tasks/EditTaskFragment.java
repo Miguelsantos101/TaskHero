@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.taskhero.R;
+import com.example.taskhero.data.model.Difficulty;
 import com.example.taskhero.data.model.Task;
 import com.example.taskhero.databinding.FragmentEditTaskBinding;
 import com.example.taskhero.ui.base.BaseTaskFormFragment;
@@ -71,11 +72,11 @@ public class EditTaskFragment extends BaseTaskFormFragment {
             updateTimeLabel();
         }
 
-        switch (currentTask.getDifficulty()) {
-            case 0:
+        switch (currentTask.getDifficultyEnum()) {
+            case EASY:
                 binding.radioGroupDifficulty.check(R.id.radio_button_easy);
                 break;
-            case 2:
+            case HARD:
                 binding.radioGroupDifficulty.check(R.id.radio_button_hard);
                 break;
             default:
@@ -108,8 +109,8 @@ public class EditTaskFragment extends BaseTaskFormFragment {
             currentTask.setDueDate(calendar.getTimeInMillis());
 
             int checkedRadioButtonId = binding.radioGroupDifficulty.getCheckedRadioButtonId();
-            int selectedDifficulty = (checkedRadioButtonId == R.id.radio_button_easy) ? 0 :
-                                     (checkedRadioButtonId == R.id.radio_button_hard) ? 2 : 1;
+            Difficulty selectedDifficulty = (checkedRadioButtonId == R.id.radio_button_easy) ? Difficulty.EASY :
+                                     (checkedRadioButtonId == R.id.radio_button_hard) ? Difficulty.HARD : Difficulty.MEDIUM;
             currentTask.setDifficulty(selectedDifficulty);
 
             NotificationScheduler.cancelTaskReminder(requireContext(), currentTask);

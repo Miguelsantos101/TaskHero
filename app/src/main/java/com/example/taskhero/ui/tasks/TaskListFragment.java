@@ -27,8 +27,6 @@ import com.example.taskhero.util.NotificationScheduler;
 import com.example.taskhero.util.UIUtils;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import java.util.Calendar;
-
 public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInteractionListener {
 
     private FragmentTaskListBinding binding;
@@ -113,56 +111,10 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
 
     @Override
     public void onTaskCompleted(Task task, boolean isCompleted, int position) {
-        task.setCompleted(isCompleted);
-        taskViewModel.updateTask(task);
+        int finalPoints = taskViewModel.completeTask(task, isCompleted, currentUser);
 
         if (isCompleted && currentUser != null) {
-            int basePoints;
-            switch (task.getDifficulty()) {
-                case 0: basePoints = 5; break;
-                case 2: basePoints = 20; break;
-                default: basePoints = 10; break;
-            }
-
-            int punctualityBonus = (task.getDueDate() > 0 && System.currentTimeMillis() <= task.getDueDate()) ? 5 : 0;
-
-            long today = getStartOfDay(System.currentTimeMillis());
-            long lastDay = getStartOfDay(currentUser.getLastCompletionDate());
-
-            if (today > lastDay) {
-                if (today - lastDay == (24 * 60 * 60 * 1000)) {
-                    currentUser.dailyStreak++;
-                } else {
-                    currentUser.dailyStreak = 1;
-                }
-                currentUser.setLastCompletionDate(System.currentTimeMillis());
-            }
-
-            double streakMultiplier = 1.0 + (Math.min(currentUser.dailyStreak - 1, 10) * 0.1);
-            int finalPoints = (int) ((basePoints + punctualityBonus) * streakMultiplier);
-            currentUser.setScore(currentUser.getScore() + finalPoints);
-            taskViewModel.updateUser(currentUser);
-
-            StringBuilder feedbackMessageBuilder = new StringBuilder();
-            String finalPointsMessage = getResources().getQuantityString(
-                    R.plurals.task_list_snackbar_points_gain,
-                    finalPoints,
-                    finalPoints
-            );
-
-            feedbackMessageBuilder.append(finalPointsMessage);
-
-            if (currentUser.dailyStreak > 1) {
-                String streakMessage = getResources().getQuantityString(
-                        R.plurals.task_list_snackbar_streak_bonus_message,
-                        currentUser.dailyStreak,
-                        currentUser.dailyStreak
-                );
-                feedbackMessageBuilder.append(" ").append(streakMessage);
-            }
-
-            String feedbackMessage = feedbackMessageBuilder.toString();
-            UIUtils.showSuccessSnackbar(requireView(), feedbackMessage);
+            showCompletionFeedback(finalPoints);
 
             NotificationScheduler.cancelTaskReminder(requireContext(), task);
             if (soundPool != null) {
@@ -176,6 +128,29 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
         }
 
         adapter.notifyItemChanged(position);
+    }
+
+    private void showCompletionFeedback(int finalPoints) {
+        StringBuilder feedbackMessageBuilder = new StringBuilder();
+        String finalPointsMessage = getResources().getQuantityString(
+                R.plurals.task_list_snackbar_points_gain,
+                finalPoints,
+                finalPoints
+        );
+
+        feedbackMessageBuilder.append(finalPointsMessage);
+
+        if (currentUser.dailyStreak > 1) {
+            String streakMessage = getResources().getQuantityString(
+                    R.plurals.task_list_snackbar_streak_bonus_message,
+                    currentUser.dailyStreak,
+                    currentUser.dailyStreak
+            );
+            feedbackMessageBuilder.append(" ").append(streakMessage);
+        }
+
+        String feedbackMessage = feedbackMessageBuilder.toString();
+        UIUtils.showSuccessSnackbar(requireView(), feedbackMessage);
     }
 
     @Override
@@ -194,17 +169,6 @@ public class TaskListFragment extends Fragment implements TaskAdapter.OnTaskInte
         dialog.show();
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.status_error));
         dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.status_neutral));
-    }
-
-    private long getStartOfDay(long timestamp) {
-        if (timestamp == 0) return 0;
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(timestamp);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        return calendar.getTimeInMillis();
     }
 
     @Override

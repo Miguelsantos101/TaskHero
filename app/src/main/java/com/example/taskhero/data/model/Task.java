@@ -43,6 +43,11 @@ public class Task {
         this.difficulty = difficulty;
     }
 
+    @Ignore
+    public Task(int userId, String title, String description, long dueDate, Difficulty difficulty) {
+        this(userId, title, description, dueDate, difficulty.getValue());
+    }
+
     public int getId() {
         return id;
     }
@@ -89,11 +94,11 @@ public class Task {
         isCompleted = completed;
     }
 
-    public int getDifficulty() {
-        return difficulty;
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty.getValue();
     }
 
-    public void setDifficulty(int difficulty) {
-        this.difficulty = difficulty;
+    public Difficulty getDifficultyEnum() {
+        return Difficulty.fromInt(this.difficulty);
     }
 }

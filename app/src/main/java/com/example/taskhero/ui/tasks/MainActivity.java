@@ -35,12 +35,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         askNotificationPermission();
+        setupToolbar();
+        setupBottomNavigation(savedInstanceState);
+    }
+
+    private void setupToolbar() {
         setSupportActionBar(binding.toolbar);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
+    }
 
+    private void setupBottomNavigation(Bundle savedInstanceState) {
         binding.bottomNavigation.setOnItemSelectedListener(this::onNavigationItemSelected);
 
         if (savedInstanceState == null) {
